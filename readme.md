@@ -17,7 +17,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> `querySelectorAll` always returns an array of elements, even when that array includes just one element. This can be fixed with `document.body`, `document.querySelectorall("body")[0]`, or `document.querySelector("body")`.
 
 ## Question 2
 
@@ -29,7 +29,7 @@ body{
 }
 ```
 
-> Your answer...
+> CSS properties are followed by a colon, not an equals sign.
 
 ## Question 3
 
@@ -38,16 +38,15 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
+$ git init 
 $ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
-$ git init project-repo
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 4
@@ -66,7 +65,7 @@ One of the lines of code in the following snippet will throw an error. Which one
 /*8*/ }
 ```
 
-> Your answer...
+> Line 3 will throw an error. `use strict` prevents you from using any variables without declaring them first with `var`. `i` hasn't been declared.
 
 ## Question 5
 
@@ -77,6 +76,10 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 ```rb
 # Your answer...
 
+fruits = ["apple", "banana", "orange"]
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
 ## Question 6
@@ -91,6 +94,20 @@ var app = express();
 
 // Your code starts here...
 
+app.get("/", function(request, response){
+  response.send("SHOW");
+});
+app.post("/", function(request, response){
+  response.send("CREATE");
+});
+app.put("/:id", function(request, response){
+  response.send("UPDATE");
+});
+app.delete("/:id", function(request, response){
+  response.send("DELETE");
+});
+// `app.patch` is also acceptable
+// Not including `:id` is acceptable.
 ```
 
 ## Question 7
@@ -102,7 +119,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> If validations fail, the first line will fail silently, while the second line will throw a fatal error.
 
 ## Question 8
 
@@ -111,6 +128,16 @@ Using jQuery, write an AJAX request to `http://tunr.com/artists` that would crea
 ```js
 // Your code starts here...
 
+$.ajax({
+  method: "POST",
+  url: "http://tunr.com/artists",
+  dataType: "json",
+  data: {
+    name: "Resin Laying Deer Figurine, Gold"
+  }
+}).done(function(){
+  alert("All done!");
+});
 ```
 
 ## Question 9
@@ -124,13 +151,24 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 ```js
 // Your code starts here...
 
+function Instructor(name){
+  this.name = name;
+}
+Instructor.prototype.receivePresent = function(gift){
+  console.log(this.name + " promptly drops the " + gift + " on the floor.");
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 ```
 
 ## Question 10
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app? Why is this option considered "better" than the other two?
 
-> Your answer...
+> **B** is correct. Angular is made up of templates and components that are very closely-linked. In this layout, related components are listed right next to each other in alphabetical order.
+
+> `A` and `C` would require a lot of jumping from folder to folder because they don't reflect the intertwinedness of HTML and JS in Angular. `C` does not reflect the "one view, one controller" paradigm.
 
 ### A:
 ```
