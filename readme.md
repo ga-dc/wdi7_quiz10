@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The `<title>` element has no closing tag.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> It defines the text that should be communicated if the user can't see the image. This could be because they are blind or because the image link is broken.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> `querySelectorAll` always returns an array of elements, even when that array includes just one element. This can be fixed with `document.body`, `document.querySelectorall("body")[0]`, or `document.querySelector("body")`.
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> CSS properties are followed by a colon, not an equals sign.
 
 ## Question 5
 
@@ -62,16 +62,15 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
+$ git init 
 $ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
-$ git init project-repo
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,8 +80,11 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
-
+Student.find_by(name: "Geraldo").sandwiches.create(type: "pbj")
+# or
+@sammich = Sandwich.create(type: "pbj")
+@student = Student.find_by(name: "Geraldo")
+@sammich.update(student: @student)
 ```
 
 ## Question 7
@@ -94,6 +96,10 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 ```rb
 # Your answer...
 
+fruits = ["apple", "banana", "orange"]
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
 ## Question 8
@@ -108,6 +114,20 @@ var app = express();
 
 // Your code starts here...
 
+app.get("/", function(request, response){
+  response.send("SHOW");
+});
+app.post("/", function(request, response){
+  response.send("CREATE");
+});
+app.put("/:id", function(request, response){
+  response.send("UPDATE");
+});
+app.delete("/:id", function(request, response){
+  response.send("DELETE");
+});
+// `app.patch` is also acceptable
+// Not including `:id` is acceptable.
 ```
 
 ## Question 9
@@ -119,7 +139,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> If validations fail, the first line will fail silently, while the second line will throw a fatal error.
 
 ## Question 10
 
@@ -128,6 +148,16 @@ Using jQuery, write an AJAX request to `http://tunr.com/artists` that would crea
 ```js
 // Your code starts here...
 
+$.ajax({
+  method: "POST",
+  url: "http://tunr.com/artists",
+  dataType: "json",
+  data: {
+    name: "Resin Laying Deer Figurine, Gold"
+  }
+}).done(function(){
+  alert("All done!");
+});
 ```
 
 ## Question 11
@@ -141,6 +171,15 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 ```js
 // Your code starts here...
 
+function Instructor(name){
+  this.name = name;
+}
+Instructor.prototype.receivePresent = function(gift){
+  console.log(this.name + " promptly drops the " + gift + " on the floor.");
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 ```
 
 ## Question 12
@@ -168,7 +207,9 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> **B** is correct. Angular is made up of templates and components that are very closely-linked. In this layout, related components are listed right next to each other in alphabetical order.
+
+> `A` and `C` would require a lot of jumping from folder to folder because they don't reflect the intertwinedness of HTML and JS in Angular. `C` does not reflect the "one view, one controller" paradigm.
 
 ### A:
 ```
@@ -230,6 +271,9 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.findOne({name: "Andy"), function(err, docs){
+  docs.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold");
+  docs.save();
+});
 ```
 
