@@ -261,3 +261,19 @@ Of the three options below, which is the most "correct" way of organizing the fi
     form.html
 ```
 
+## Question 14
+
+Convert the following ActiveRecord sequence to Mongoose:
+
+```rb
+@andy = Instructor.find_by(name: "Andy")
+@andy.wishlist_items.create(description: "Resin Laying Deer Figurine, Gold")
+```
+
+```js
+Instructor.findOne({name: "Andy"), function(err, docs){
+  docs.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold");
+  docs.save();
+});
+```
+
