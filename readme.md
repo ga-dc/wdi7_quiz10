@@ -10,6 +10,30 @@
 
 ## Question 1
 
+You've written the following HTML. When you look at it in your browser, it's just blank! Why?
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz
+  </head>
+  <body>
+    <h1>What a great site.</h1>
+  </body>
+</html>
+```
+
+> The `<title>` element has no closing tag.
+
+## Question 2
+
+What's the purpose of the `alt` attribute on image tags?
+
+> It defines the text that should be communicated if the user can't see the image. This could be because they are blind or because the image link is broken.
+
+## Question 3
+
 Why does the following code snippet throw an error, and what would fix the error?
 
 ```js
@@ -17,9 +41,9 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> `querySelectorAll` always returns an array of elements, even when that array includes just one element. This can be fixed with `document.body`, `document.querySelectorall("body")[0]`, or `document.querySelector("body")`.
 
-## Question 2
+## Question 4
 
 Why does the following code snippet throw an error, and what would fix the error?
 
@@ -29,46 +53,41 @@ body{
 }
 ```
 
-> Your answer...
+> CSS properties are followed by a colon, not an equals sign.
 
-## Question 3
+## Question 5
 
 **The scenario:** You're starting a new app. You create a local repo and a repo on Github, create a readme file, and put it on Github. Then you run into Juan, who's already done a lot of the work you were planning to do. You want to pull his code down and include it in your repo, and put your combined code up on your Github repo.
 
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
+$ git init 
 $ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
-$ git init project-repo
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
-## Question 4
+## Question 6
 
+Your Rails database has two tables. `students` has the columns `id` and `name`, and `sandwiches` has the columns `id`, `type`, and `student_id`.
 
-One of the lines of code in the following snippet will throw an error. Which one is it, and why?
+Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
-```js
-/*1*/ "use strict";
-/*2*/ var max = 100;
-/*3*/ for(i = 1; i < max; i++){
-/*4*/   if(i % 15 == 0) console.log("FizzBuzz");
-/*5*/   else if(i % 3 == 0) console.log("Fizz");
-/*6*/   else if(i % 5 == 0) console.log("Buzz");
-/*7*/   else console.log(i);
-/*8*/ }
+```rb
+Student.find_by(name: "Geraldo").sandwiches.create(type: "pbj")
+# or
+@sammich = Sandwich.create(type: "pbj")
+@student = Student.find_by(name: "Geraldo")
+@sammich.update(student: @student)
 ```
 
-> Your answer...
-
-## Question 5
+## Question 7
 
 Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`, and `orange`.
 
@@ -77,9 +96,13 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 ```rb
 # Your answer...
 
+fruits = ["apple", "banana", "orange"]
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
-## Question 6
+## Question 8
 
 Write one Express route for each of four HTTP methods.
 
@@ -91,9 +114,23 @@ var app = express();
 
 // Your code starts here...
 
+app.get("/", function(request, response){
+  response.send("SHOW");
+});
+app.post("/", function(request, response){
+  response.send("CREATE");
+});
+app.put("/:id", function(request, response){
+  response.send("UPDATE");
+});
+app.delete("/:id", function(request, response){
+  response.send("DELETE");
+});
+// `app.patch` is also acceptable
+// Not including `:id` is acceptable.
 ```
 
-## Question 7
+## Question 9
 
 What is the difference between the two following lines of code?
 
@@ -102,18 +139,28 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> If validations fail, the first line will fail silently, while the second line will throw a fatal error.
 
-## Question 8
+## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
 // Your code starts here...
 
+$.ajax({
+  method: "POST",
+  url: "http://tunr.com/artists",
+  dataType: "json",
+  data: {
+    name: "Resin Laying Deer Figurine, Gold"
+  }
+}).done(function(){
+  alert("All done!");
+});
 ```
 
-## Question 9
+## Question 11
 
 Due to budget cuts, GA can no longer hire new instructors. Instead they can only instantiate new instructors with Javascript.
 
@@ -124,13 +171,45 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 ```js
 // Your code starts here...
 
+function Instructor(name){
+  this.name = name;
+}
+Instructor.prototype.receivePresent = function(gift){
+  console.log(this.name + " promptly drops the " + gift + " on the floor.");
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 ```
 
-## Question 10
+## Question 12
 
-Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app? Why is this option considered "better" than the other two?
+Your Rails app has the following `application.html.erb`. Nothing shows up in your browser on any of your app's pages. Why not?
+
+```erb
+<!DOCTYPE html
+<html>
+<head>
+  <title>Quiz</title
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% yield %>
+</body>
+</html>
+```
 
 > Your answer...
+
+## Question 13
+
+Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
+
+> **B** is correct. Angular is made up of templates and components that are very closely-linked. In this layout, related components are listed right next to each other in alphabetical order.
+
+> `A` and `C` would require a lot of jumping from folder to folder because they don't reflect the intertwinedness of HTML and JS in Angular. `C` does not reflect the "one view, one controller" paradigm.
 
 ### A:
 ```
