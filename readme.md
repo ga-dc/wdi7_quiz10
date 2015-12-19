@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> You're missing a closing `</title>` tag
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> `alt` provides alternate text for an image, which is read by screen readers
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> the `.querySelectorAll()` method returns an array, so you would have to specify the index of the item you want to change, in this case [0]. Alternatively, since there is only one `body` element in a html page, you should probably use `.querySelector("body")`, and the rest would work fine.
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> In CSS, the correct syntax is to use a `:` instead of a `=`, and "red" should not be in quotes.
 
 ## Question 5
 
@@ -62,16 +62,29 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
+$ touch README.md X
+$ git push origin master X
+$ git push origin master X
+$ git remote add origin git@github.com/username/project-repo.git X
+$ git remote add juan git@github.com/juan/project-repo.git X
+$ git commit -m "initial commit" X
+$ cd project-repo X
+$ git init project-repo X
+$ git add . X
+$ git merge juan/feature X
+```
+
+```
 $ git init project-repo
+$ cd project-repo
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,7 +94,6 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
 
 ```
 
@@ -106,7 +118,10 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get();
+app.post();
+app.put();
+app.delete();
 
 ```
 
@@ -119,14 +134,26 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> The bang!
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+
+$.ajax({
+  type:"POST",
+  dataType:"json",
+  url:"http://tunr.com/artists",
+  data:{name:"Resin Laying Deer Figurine, Gold"}
+})
+.done(function(res){
+  alert("All done!");
+})
+.fail(function(err){
+  console.log(err);
+});
 
 ```
 
@@ -139,7 +166,15 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor = function(name){
+  this.name = name;
+  this.receivePresent = function(gift){
+    console.log(this.name + "promptly drops the "+gift+" on the floor.")
+  }
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold")
 
 ```
 
@@ -162,13 +197,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> `<% yield %>` should be `<%= yield %>`
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> Option B is the best, because it organizes angular components by the entities they're associated with.
 
 ### A:
 ```
@@ -230,6 +265,5 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
-```
 
+```
