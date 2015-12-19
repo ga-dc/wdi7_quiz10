@@ -157,7 +157,8 @@ What is the difference between the two following lines of code?
 ```
 
 > besides the bang?
->the one without the bang won't return an error it just won't save if something is invalid 
+>the one without the bang won't return an error it just won't save if something is invalid
+
 >the exclamation point one will raise an error if the record is invalid
 
 ## Question 10
@@ -201,13 +202,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> It's that darn title tag again, it needs a closing ">"
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> We used option B and I don't actually know why we are dumping so much stuff together, but I guess it has to do with keeping paths cleaner on the index.html 
 
 ### A:
 ```
