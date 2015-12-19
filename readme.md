@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The <title> tag is unclosed. "<title>Quiz" needs a "</title>" closing tag to follow.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> Alt serves as an alternate word to show if the primary image option is not available (error, link, load, etc...). In this way, the viewer of the page can still experience some of what the true image could provide. 
 
 ## Question 3
 
@@ -232,4 +232,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
