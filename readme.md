@@ -261,7 +261,7 @@ Convert the following ActiveRecord sequence to Mongoose:
 
 ```js
 
-//unsure if we need to save andy after creating the new gift.  i think the gift gets saved because we use the create
+//unsure if we need to save andy after creating the new gift.  I think the gift gets saved because we use the create
 //method, but don't know if we need to save andy separately or not.
 var andy = Instructor.findOne("name":"Andy").then(function(err, res){
   if (!err) {
