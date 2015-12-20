@@ -30,7 +30,7 @@ You've written the following HTML. When you look at it in your browser, it's jus
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Alt serves as an alternate word to show if the primary image option is not available (error, link, load, etc...). In this way, the viewer of the page can still experience some of what the true image could provide. 
+> Alt serves as an alternate word to show if the primary image option is not available (error, link, load, etc...). In this way, the viewer of the page can still experience some of what the true image could provide.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> The declaration does not actually find the body of the document. The first line should read "var theBody = document.body;" which would properly select the body. Then "theBody.style.backgroundColor = "red";" would assign the background-color of the document body to be red.
 
 ## Question 4
 
@@ -53,7 +53,11 @@ body{
 }
 ```
 
-> Your answer...
+> The syntax is slightly off. CSS code doesn't use "=" to assign values, but rather ":", and also "red" should be without quotes. So
+body{
+  background-color: red;
+}
+Is code that would properly assign the background color of body to be red. 
 
 ## Question 5
 
