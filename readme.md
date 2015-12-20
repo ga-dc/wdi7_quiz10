@@ -24,7 +24,7 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-The document is missing a closing title tag after "Quiz" (</title>)
+The document is missing a closing title tag after "Quiz": `</title>`
 
 ## Question 2
 
