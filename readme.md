@@ -261,14 +261,18 @@ Convert the following ActiveRecord sequence to Mongoose:
 
 ```js
 
-// could make this simpler depending how our mongoose models are set up
+//unsure if we need to save andy after creating the new gift.  i think the gift gets saved because we use the create
+//method, but don't know if we need to save andy separately or not.
 var andy = Instructor.findOne("name":"Andy").then(function(err, res){
   if (!err) {
-    var gift = WishListItem.create({'description':"Resin Laying Deer Figure, Gold"}).then(function(err, res){
-      if (!err){
-        andy.wishListItems.push(res)
-      }
+    res.WishListItem.create({'description':"Resin Laying Deer Figure, Gold"}).then(function(err, res){
+      andy.save().then(function(err, res){
+        if (!err){
+          console.log("saved")
+        }
+      })
     })
   }
 })
+
 ```
