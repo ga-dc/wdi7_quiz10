@@ -23,7 +23,8 @@ You've written the following HTML. When you look at it in your browser, it's jus
   </body>
 </html>
 ```
-> There's no closing tag for the <title> element so it's reading everything that follows as the title.
+> There's no closing tag for the title element so it's reading everything that follows as the title...
+
 
 ## Question 2
 
