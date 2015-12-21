@@ -30,7 +30,7 @@ You've written the following HTML. When you look at it in your browser, it's jus
 
 What's the purpose of the `alt` attribute on image tags?
 
-> `alt` provides alternate text for an image, which is read by screen readers
+> `alt` provides alternate text for an image, which is read by screen readers or in cases where the image doesn't load
 
 ## Question 3
 
@@ -94,7 +94,8 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-
+geraldo = Student.find_by(name: 'Geraldo')
+geraldo.sandwiches.create(type: 'pbj')
 ```
 
 ## Question 7
@@ -104,8 +105,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
-
+fruits = ['apple','banana','orange']
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
 ## Question 8
@@ -118,11 +121,18 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-app.get();
-app.post();
-app.put();
-app.delete();
-
+app.get("/artists",function(req,res){
+  res.send("index")
+});
+app.post("/artists",function(req,res){
+  res.send("create")
+});
+app.put("/artists/:id",function(req,res){
+  res.send("update")
+});
+app.delete("/artists/:id",function(req,res){
+  res.send("destroy")
+});
 ```
 
 ## Question 9
@@ -134,7 +144,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> The bang!
+> The bang! will let you know if the save action executed properly while the other would not.
 
 ## Question 10
 
@@ -197,7 +207,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> `<% yield %>` should be `<%= yield %>`
+> `<% yield %>` should be `<%= yield %>`, and `<!DOCTYPE html>` isn't closed
 
 ## Question 13
 
@@ -265,5 +275,10 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-
+var andy = Instructor.findOne({"name":"Andy"},function(err,doc){
+  doc.wishlist_items.push({description:"Resin Laying Deer Figurine, Gold"});
+  doc.save(function(err){
+    if (err) console.log(err);
+  })
+})
 ```
