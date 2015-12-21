@@ -74,9 +74,9 @@ $ git add .
 $ git commit -m "initial commit"
 $ git remote add origin git@github.com/username/project-repo.git
 $ git push origin master
-$ git push origin master
 $ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
