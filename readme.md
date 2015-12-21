@@ -140,22 +140,22 @@ var app = express();
 
 //CREATE
 app.post("/cats", function(req, res){
-  console.log("I'm creating a new cat.")
+  console.log("create")
 });
 
 //READ
 app.get("/cats", function(req, res){
-  console.log("I'm getting, or reading, a list of all the cats.")
+  console.log("index")
 });
 
 //UPDATE
 app.put("/cats/:cat_id", function(req, res){
-  console.log("I'm update a single cat.")
+  console.log("update")
 });
 
 // Destroy
 app.delete("/cats/:cat_id", function(req, res){
-  console.log("I'm deleting a single cat")
+  console.log("delete")
 })
 
 ```
