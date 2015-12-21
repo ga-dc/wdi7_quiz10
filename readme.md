@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> THis won't work because you're using querySelectorAll and need to use querySelector
+> This won't work because you're using querySelectorAll and need to use querySelector
 
 ## Question 4
 
@@ -166,7 +166,16 @@ What is the difference between the two following lines of code?
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+var data = {name: "Resin Laying Deer Figurine, Gold"}
+.ajax({
+  url:"http://tunr.com/artists",
+  datatype: "json",
+  type: "post",
+  data: data
+})
+}).done(function(){
+  alert("all done")
+} )
 
 ```
 
@@ -179,7 +188,16 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+
+var instructor = function(name, gift){
+  this.name = name
+  this.gift = gift
+  this.recievePresent = function(){
+      console.log(name + "drops on the floor"+ gift)
+    }
+  }
+
+Instructor("andy", "Resin Laying Deer Figurine, Gold")
 
 ```
 
@@ -208,7 +226,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> We used option B and I don't actually know why we are dumping so much stuff together, but I guess it has to do with keeping paths cleaner on the index.html 
+> We used option B and I don't actually know why we are dumping so much stuff together, but I guess it has to do with keeping paths cleaner on the index.html
 
 ### A:
 ```
@@ -270,5 +288,10 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.find({ name: "Andy"})
+
+var thingIBroke = new wishlist_items({description: "Resin Laying Deer Figurine, Gold"});
+
+thingIBroke.save()
+
 ```
