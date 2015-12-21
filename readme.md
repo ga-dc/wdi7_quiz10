@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+I forgot to close the title tag.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+The 'alt' attribute is required as alternate text for images that do not appear. It helps persons who, for whatever reason, cannot see the image or who use a screen reader.
 
 ## Question 3
 
@@ -41,7 +41,21 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+This code throws an error because using "querySelectorAll" returns a list of the elements that match that query within the document as a NodeList and does not specifically target the document's body. Here are some ways to fix the error:
+
+```js
+var theBody = document.querySelectorAll("body")[0];
+theBody.style.backgroundColor="red";
+```
+OR
+```js
+var theBody = document.querySelector("body");
+theBody.style.backgroundColor="red";
+```
+OR
+```js
+document.body.style.backgroundColor="red";
+```
 
 ## Question 4
 
@@ -53,7 +67,7 @@ body{
 }
 ```
 
-> Your answer...
+This code throws an error because the syntax is incorrect. In a CSS declaration, you separate the value from a property using a colon, not an equal sign.
 
 ## Question 5
 
@@ -62,16 +76,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,7 +95,12 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+var geraldo = (name: "Geraldo", id: 1)
+var pbj = Sandwich.create(type: "pbj", student_id: 1)
+
+or
+
+geraldo.sandwich.create(type: "pbj")
 
 ```
 
@@ -92,7 +111,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 
 ```
 
@@ -106,8 +128,21 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get("/blogs", function(req, res){
+  res.send("read");
+});
 
+app.post("/blogs", function(req, res){
+  res.send("create");
+});
+
+app.put("/blogs/:blog_id", function(req, res){
+  res.send("update");
+});
+
+app.delete("/blogs/:blog_id", function(req, res){
+  res.send("delete");
+});
 ```
 
 ## Question 9
@@ -117,16 +152,32 @@ What is the difference between the two following lines of code?
 ```rb
 @artist.save
 @artist.save!
+
 ```
 
-> Your answer...
+".save" and ".save!" will both save data to the database if the data is valid, but if the data is not valid, ".save" will return false while ".save!" will raise the exception "ActiveRecord::RecordInvalid".
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+function createArtist() {
+    var url = "http://tunr.com/artists";
+    $.ajax({
+      url: url,
+      data: {artist: {name: "Resin Laying Deer Figurine, Gold"}},
+      type: "post",
+      dataType: "json"
+    })
+    .done(function(response){
+      alert("All done!");
+    })
+    .fail(function(){
+      alert("Failed to create artist.");
+    }).always(function(){
+    })
+  }
 
 ```
 
@@ -139,7 +190,16 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor = function(name){
+  this.name = name;
+}
+
+Instructor.prototype.receivePresent = function(gift){
+    console.log(this.name + " promptly drops the " + gift + " on the floor.")
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 
 ```
 
@@ -162,13 +222,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Some symbols are missing- the first line is missing the greater than symbol and the title tag is missing the greater than symbol as well. The clown hats around the yield need to print out the contents of the pages so it needs to have an equal sign in it - <%= yield =>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+The best Angular structure should be modularized into specific functions to make it easier to find and edit files and to maintain the components of the app. That means option B would be the best because it places all relevant files under its matching feature. All files dealing with the artist module would go into that directory and all files dealing with the songs would be categorized under songs. The only thing issue I have about all these options is that the uppermost directory is called jS but all the files inside that directory are not jS files. I like John Papa's "Folders-by-Feature Structure" in which he has the uppermost directory as just being called "app."
 
 ### A:
 ```
@@ -230,6 +290,17 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
-```
+var andy = Instructor.findOne({name: "Andy"}, function(err, doc){
+  if (!err) {
+    console.log("Success in retrieving " + doc.name);
+  } else {
+    console.log(err.message);
+  }
+});
 
+andy.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold"});
+andy.save(function (err) {
+  if (!err) console.log('Success!');
+});
+
+```
