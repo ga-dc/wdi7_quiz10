@@ -298,7 +298,7 @@ var andy = Instructor.findOne({name: "Andy"}, function(err, doc){
   }
 });
 
-andy.wishlist_items.push(new WishListItem({description: "Resin Laying Deer Figurine, Gold"}));
+andy.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold"});
 andy.save(function (err) {
   if (!err) console.log('Success!');
 });
