@@ -192,10 +192,12 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 ```js
 var Instructor = function(name){
   this.name = name;
-  this.receivePresent = function(gift){
-    console.log(this.name + " promptly drops the " + gift + " on the floor.")
-  }
 }
+
+Instructor.prototype.receivePresent = function(gift){
+    console.log(this.name + " promptly drops the " + gift + " on the floor.")
+}
+
 var andy = new Instructor("Andy");
 andy.receivePresent("Resin Laying Deer Figurine, Gold");
 
@@ -220,7 +222,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-The clown hats around the yield need to print out the contents of the pages so it needs to have an equal sign in it - <%= yield =>
+Some symbols are missing- the first line is missing the greater than symbol and the title tag is missing the greater than symbol as well. The clown hats around the yield need to print out the contents of the pages so it needs to have an equal sign in it - <%= yield =>
 
 ## Question 13
 
@@ -296,7 +298,7 @@ var andy = Instructor.findOne({name: "Andy"}, function(err, doc){
   }
 });
 
-andy.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold"})
+andy.wishlist_items.push(new WishListItem({description: "Resin Laying Deer Figurine, Gold"}));
 andy.save(function (err) {
   if (!err) console.log('Success!');
 });
