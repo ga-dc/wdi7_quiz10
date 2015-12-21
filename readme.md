@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+The title tag isn't closed!!
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+So that both if the image doesn't load, there's something describing what it's supposed to be, and also for disabled people who can't view the page like most.
 
 ## Question 3
 
@@ -41,7 +41,8 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+querySelectorAll returns an array! and you can't set the style of an array, only an element. so I would fix by slapping on a [0] like:
+theBody[0].style.backgroundColor = "red";
 
 ## Question 4
 
@@ -53,7 +54,9 @@ body{
 }
 ```
 
-> Your answer...
+Not =, but :
+background-color : "red";
+
 
 ## Question 5
 
@@ -62,16 +65,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,8 +84,7 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
-
+Geraldo.sandwiches.create('pbj')
 ```
 
 ## Question 7
@@ -92,8 +94,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
-
+fruits = %w(apple, banana, orange)
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
 ## Question 8
@@ -106,7 +110,21 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get('/',function(){
+  res.send('index')
+});
+
+app.post('/',function(){
+  res.send('create')
+});
+
+app.delete('/model/:id',function(){
+  res.send('destroy')
+});
+
+app.put('/model/:id',function(){
+  res.send('update')
+});
 
 ```
 
@@ -119,14 +137,22 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+The latter will go into the kitchen, retrieve all the pots and pans, reenact tchaikovsky's 1812 overture with them against your walls and counter, and finally throw them at your face, preventing your program from running. Whereas the first one will simply fail without a sound!
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+
+$.ajax({
+  url: 'http://tunr.com/artists',
+  method: POST,
+  type: 'application/json',
+  data: {Artist:'Resin Layering Deer Figurine, Gold'},
+}).done(function(){
+  alert('All done!');
+});
 
 ```
 
@@ -139,7 +165,14 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Instructor(name){
+  this.name=name;
+  this.receivePresent=function(gift){
+    console.log(this.name+' promptly drops the '+gift+' on the floor.');
+  }
+}
+Andy=new Instructor('Andy');
+Andy.receivePresent("Resin Laying Deer Figurine, Gold");
 
 ```
 
@@ -162,13 +195,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+The doctype tag isn't closed?
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+B! It's organized by model. As far as why it's better that way?...Maybe because that's how we think, and we most often need to reference these files against each other, so it makes sense that they're next to each other so we don't have to search between folders all the time? In any case, B looks most like how we did Angular in class.
 
 ### A:
 ```
@@ -230,6 +263,16 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.find({name:"Andy"},function(err,data){
+  if (err) {
+    console.log(err);
+  }
+  else {
+    data.wishlist_items.create({description:"Resin Laying Deer Figurine, Gold"},function(){
+      if (err) {
+        console.log(err);
+      }
+    })
+  }
+})
 ```
-
