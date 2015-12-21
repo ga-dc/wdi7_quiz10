@@ -272,5 +272,14 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+
+var andy = Instructor.findOne(name: "Andy")
+var deer = new wishListItem({
+  description: "Resin Laying Deer Figurine, Gold"
+})
+deer.save();
+andy.wishListItem.push(deer)
+andy.save();
+
+
 ```
