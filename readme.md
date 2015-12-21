@@ -24,13 +24,14 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The title tag is missing a closure.
+It should be <title>Quiz</title>
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The alt tag displays text for an image if the given image cannot be displayed.  It is also used for the visually impaired
 
 ## Question 3
 
@@ -41,7 +42,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> The querySelectorAll returns an array, even if there is only one element returned.  To fix the error, you could simply run: theBody[0].style.backgroundColor = "red";
 
 ## Question 4
 
@@ -53,7 +54,11 @@ body{
 }
 ```
 
-> Your answer...
+> The syntax for css is to use ":" instead of an "=". The quotes around red will also cause an error.  the correct code would be:
+
+body{
+  background-color : red;
+}
 
 ## Question 5
 
@@ -62,15 +67,15 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
+$ touch README.md
 $ git init project-repo
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ git push origin master
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
 ```
 
@@ -81,7 +86,10 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+Sandwich.create({
+type: 'pbj',
+student_id: Student.find_by(name:'Geraldo')
+})
 
 ```
 
@@ -92,8 +100,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
-
+fruits = ['apple', 'banana','orange']
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
 ## Question 8
@@ -106,7 +116,10 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get("this will lead to show/index")
+app.put("this will edit/update")
+app.post("this will create")
+app.delete("this destroys")
 
 ```
 
@@ -119,14 +132,33 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> the @artist.save! will raise an error while the other option leads to a "silent" error if the save is not successful
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+function() {
+    var url = 'http://tunr.com/artists';
+    var request = $.ajax({
+      url: url,
+      method: "POST",
+      data: {
+        name:'Resin Laying Deer Figurine, Gold'
+      },
+      contentType : "application/json",
+      success: function(){
+        alert("All done!");
+      }
+      , error: function(jqXHR, textStatus, err){
+        console.log(textStatus)
+      }
+    }).then(
+      console.log("Done")
+    );
+    return request;
+  }
 
 ```
 
@@ -139,7 +171,18 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor = function (name){
+this.name = name
+}
+
+Instructor.prototype = {
+  receivePresent: function (gift) {
+    console.log(this.name+ " promptly drops the "+gift+" on the floor.");
+  }
+}
+
+var andy = new Instructor('Andy')
+andy.receivePresent("Resin Laying Deer Figurine, Gold")
 
 ```
 
@@ -162,13 +205,16 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> <% yield %> is missing its "="
+it should be: <%= yield %>
+
+While they won't return nothing, the DOCTYPE and title tag are also both missing ">"
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> I would go with answer "B".  This organization conforms to the John Papa styling guide, and therefore would be the more "conventional" way to set it up. In other words, it is the most common method of organization.
 
 ### A:
 ```
@@ -230,6 +276,9 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+db.Instructor.find({name:"Andy"})
+db.Instructor.update(
+  {"name": "Andy"},
+  { $set: { description: "Resin Laying Deer Figurine, Gold" }}
+)
 ```
-
