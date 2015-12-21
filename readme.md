@@ -169,7 +169,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-Both instances will save a record. The second version with the added ensures that the app will throw an error if a validation fails. Without the bang, it fails silently meaning I wouldn't know if the validation failed without checking.
+Both instances will save a record. The second version with the added bang ensures that the app will throw an error if a validation fails. Without the bang, it fails silently meaning I wouldn't know if the validation failed without checking.
 
 ## Question 10
 
