@@ -24,15 +24,16 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The title tag in head is not closed so the html recognize the whole thing as title
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> there are couple of reasons why we use alt attrib for img tags. One is to help visual impaired
+and two it is easier to know what exactly the image was supposed to be.
 
-## Question 3
+## Question 3 ******************************************
 
 Why does the following code snippet throw an error, and what would fix the error?
 
@@ -41,7 +42,8 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> need to revisit the DOM attribute control. I think it's an error because there's no style attribute called
+backgroundColor. Maybe it's supposed to be just style.background = "color: "red"";
 
 ## Question 4
 
@@ -53,7 +55,7 @@ body{
 }
 ```
 
-> Your answer...
+> it should be background-color: "red";
 
 ## Question 5
 
@@ -73,6 +75,17 @@ $ git init project-repo
 $ git add .
 $ git merge juan/feature
 ```
+<!-- $ cd project-repo
+$ git init project-repo
+$ touch README.md
+$ git remote add origin git@github.com/username/project-repo.git
+$ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ cd project-repo
+$ git merge juan/feature
+$ git push origin master -->
+
 
 ## Question 6
 
@@ -81,8 +94,11 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
-
+class Sandwich < ActiveRecord::Base
+  belongs_to: student
+end
+@geraldo = Student.find(name: "Geraldo")
+@pbj = Sandwich.create(id: 1, type: "pbj", student_id: @geraldo.id)
 ```
 
 ## Question 7
@@ -92,8 +108,11 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
 
+fruits.each do |fruit|
+puts "I'd like to eat a " + fruit
+end
 ```
 
 ## Question 8
@@ -105,12 +124,26 @@ Then, make each route respond with a one-word string containing the RESTful acti
 ```js
 var express = require("express");
 var app = express();
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Your code starts here...
+app.post("/", function(req, res){
+  res.send("Posted"+req.body.name);
+});
+app.get("/", function(req, res){
+  res.send("Read");
+});
+app.update("/edit", function(req, res){
+  res.send("Edited"+req.body.name);
+});
+app.delete("/delete", function(req, res){
+  res.send("Deleted" + req.body.name);
+});
+
 
 ```
 
-## Question 9
+## Question 9 ************************************
 
 What is the difference between the two following lines of code?
 
@@ -119,14 +152,21 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> with !, the validation always runs. With !, it affects memory space.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+$.ajax({
+  url: "http://tunr.com/artists",
+  type: "post",
+  data: {artist: {name: "Resin Laying Deer Figurine, Gold"}},
+  dataType: "json"
+}).done(function(){
+  console.log("All done!");
+})
 
 ```
 
@@ -139,8 +179,20 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+// assume in model.js, there is the following code
+var Instructor = function(info){
+  this.name = info.name;
+};
 
+Instructor.prototype = {
+  receivePresent: function(gift){
+    console.log(this.name+"promptly drops the"+gift+"on the floor");
+  }
+};
+var andy = new Instructor({
+  name: Andy
+});
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 ```
 
 ## Question 12
@@ -162,13 +214,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> title tag is not closed
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+>B. Everything related to model is in the same folder.
 
 ### A:
 ```
@@ -230,6 +282,5 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
-```
 
+```
