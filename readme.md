@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> Because the title tage is not closed. Need </title> on line 19 or 20.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> If the picture does not render, the alt tag provides a description of the photo. Also for disabled people who cannot view the page.
 
 ## Question 3
 
@@ -41,7 +41,9 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> Selecting theBody like this is returning an array, instead of the actual body property. i would fix this like:
+var theBody = document.querySelectorAll("body");
+theBody[0].style.backgroundColor = "red";
 
 ## Question 4
 
@@ -53,7 +55,10 @@ body{
 }
 ```
 
-> Your answer...
+> red should not be in quotation marks, and there should not be an equals sign. Fixed version:
+body{
+  background-color: red;
+}
 
 ## Question 5
 
@@ -62,16 +67,17 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
+
 ```
 
 ## Question 6
@@ -81,7 +87,7 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+
 
 ```
 
@@ -119,7 +125,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> The first line of code is just saving this instance of the artist at this particiular point in the code. The @artist.save! is saving it throught the entire program to access.
 
 ## Question 10
 
@@ -162,7 +168,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> The <!DOCTYPE html> on line 1 is missing a closing tab, the </title> on line 160 is missing a closing tag, 
 
 ## Question 13
 
@@ -232,4 +238,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
