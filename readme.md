@@ -57,7 +57,7 @@ body{
 body{
   background-color: red;
 }
-Is code that would properly assign the background color of body to be red. 
+Is code that would properly assign the background color of body to be red.
 
 ## Question 5
 
@@ -66,16 +66,16 @@ Is code that would properly assign the background color of body to be red.
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ cd project-repo
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -85,7 +85,8 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+geraldo = Student.create(name: "Geraldo")
+Sandwich.create(type: "pbj", student_id: Student.find_by(name: "Geraldo").id)
 
 ```
 
@@ -96,7 +97,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
+fruits do |fruit|
+  puts "I'd like to eat a #{fruit}."
+end
 
 ```
 
@@ -110,7 +114,25 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+// read
+app.get("/songs", function (req,res){
+  res.send("index")
+});
+
+// create
+app.post("/", function (req, res) {
+  res.send("new")
+});
+
+// update
+app.put("/songs/:id", function (req, res) {
+  res.send("edit")
+});
+
+// destroy
+app.delete("/songs/:id", function (req, res) {
+  res.send("destroy")
+});
 
 ```
 
@@ -123,14 +145,14 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> ".save" and ".save!" serve similar purposes, primarily to save a model to a database. ".save" does not return an errors based on success, but rather a true or false boolean. ".save!" raises an error if the save to the database is not successful. Banging your saves will raise errors early in development.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+
 
 ```
 
