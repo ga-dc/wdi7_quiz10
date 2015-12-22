@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+The <title> tag is not closed. needs a </title>
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+It's the text displayed when a screen reader translates an image.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+querySelectorAll returns an Array. You'd have to either user querySelector or theBody[0].
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+CSS is set with a colon not an equal sign.
 
 ## Question 5
 
@@ -62,16 +62,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ touch README.md
+$ git remote add origin git@github.com/username/project-repo.git
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,7 +81,9 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+Assuming the association is already created in the schema.
+geraldo = students.find_by_name("Geraldo")
+geraldo.sandwiches.create(type:"pbj")
 
 ```
 
@@ -92,7 +94,9 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple","banana","orange"]
+fruits.each do |item|
+  puts "I'd like to eat a #{item}"
 
 ```
 
@@ -107,6 +111,21 @@ var express = require("express");
 var app = express();
 
 // Your code starts here...
+app.get("/", function(req, res){
+  res.send("index")
+})
+
+app.post("/artists", function(req, res){
+  res.send("create")
+})
+
+app.put("/artist/:id/edit", function(req, res){
+  res.send("update")
+})
+
+app.delete("/artist/:id", function(req, res){
+  res.send("destroy")
+})
 
 ```
 
@@ -119,14 +138,18 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+save! raises an error when it fails. save returns a true/false
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+$.post("http://turn.com/artist", {'name': 'Resin Laying Deer Figurine, Gold'})
+  .done(function(data){
+    alert("All done!")
+  }
+});
 
 ```
 
@@ -139,8 +162,16 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Instructor(name){
+  this.name = name;
+  this.receivePresent = function(gift) {
+    console.log(this.name + "promptly drops the " + gift + " on the floor.")
+  }
+}
 
+Andy = new Instructor("Andy");
+
+Andy.receivePresent("Resin Laying Deer Figurine, Gold")
 ```
 
 ## Question 12
@@ -162,13 +193,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Yield needs an = sign... <%= yield %>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+B. It will keep all associated files listed together alphabetically.
 
 ### A:
 ```
@@ -230,6 +261,6 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+andy = Instructor.find({name: "Andy"})
+andy.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold"})
 ```
-
