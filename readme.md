@@ -24,7 +24,7 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-the title tag is not closed
+the title tag is not closed (line 19 </title>)
 
 ## Question 2
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+delete the All... querySelectorAll returns an array, querySelector brings the first (or only) "body" tag.
 
 ## Question 4
 
@@ -141,7 +141,7 @@ What is the difference between the two following lines of code?
 @artist.save
 @artist.save!
 
-if @artist.save! does not save it will raise an error, if @artist.save does not save it will return false.
+if @artist.save! does not save it will raise an error, if @artist.save does not save it will return false (fail silently).
 ```
 
 
@@ -160,7 +160,7 @@ Using jQuery, write an AJAX request to `http://tunr.com/artists` that would crea
     }).done(function(response) {
       alert('All done!');
     }).fail(function(response){
-      console.log("Ajax get request failed.");
+      console.log("Not all done");
     })
 
 ```
@@ -174,9 +174,10 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-function Instructor(initialName) {
+function Instructor(initialName, gift) {
   this.name = initialName;
-  this.recievePresent = function(gift) {console.log(this.name + "promptly drops the" + gift + "on the floor")};
+  this.gift = gift
+  this.recievePresent = function() {console.log(this.name + "promptly drops the" + gift + "on the floor")};
 }
 
 ```
@@ -267,7 +268,11 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-var Instructor = mongoose.model('Instructor', { name: String });
-var andy = 
+
+Instructor.findOne({ name: 'Andy' }, function (err, doc) {
+  if (err) return handleError(err);
+  doc.update({wishlist_items: "Resin Laying Deer Figurine, Gold"})
+})
+
 
 ```
