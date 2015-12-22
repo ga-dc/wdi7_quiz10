@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The title tag is not closing.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The alt attribute will take a string as a value to display for screen readers, when the image is not available or for search engine crawlers.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> Because querySelectorAll will give an array of elements that match the tag 'body'; setting the background of an array results in an error.
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> Wrong CSS syntax. background-color: red;
 
 ## Question 5
 
@@ -62,16 +62,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
+$ touch README.md
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
 $ git merge juan/feature
+$ git remote add juan git@github.com/juan/project-repo.git
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,8 +81,8 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
-
+geraldo = Student.create(name: 'Geraldo')
+geraldo.sandwiches.create(type: 'pbj')
 ```
 
 ## Question 7
@@ -93,7 +93,11 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 
 ```rb
 # Your answer...
+fruits = ['apple', 'banana', 'orange']
 
+fruits.each do |fruit|
+  puts "I'd like to eat a " + fruit
+end
 ```
 
 ## Question 8
@@ -106,7 +110,21 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get('/something', function(req, res){
+  res.end('Read')
+})
+
+app.post('/something', function(req, res){
+  res.end('Create')
+})
+
+app.put('/something', function(req, res){
+  res.end('Update')
+})
+
+app.delete('/something', function(req, res){
+  res.end('Destroy')
+})
 
 ```
 
@@ -119,7 +137,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> The one with the bang will return true/false to indicate whether saving was successful
 
 ## Question 10
 
@@ -127,6 +145,14 @@ Using jQuery, write an AJAX request to `http://tunr.com/artists` that would crea
 
 ```js
 // Your code starts here...
+$.ajax({
+      url: 'http://tunr.com/artists',
+      method: 'post',
+      data: {name: 'Resin Laying Deer Figurine, Gold'},
+      contentType: 'application/json'
+    }).done(function(res){
+      alert('All Done!')
+    })
 
 ```
 
@@ -140,7 +166,14 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 
 ```js
 // Your code starts here...
-
+function Instructor(name, gift){
+  var self = this;
+  this.name = name;
+  this.receivePresent = function (gift){
+    console.log(self.name + "promptly drops the "+ gift +" on the floor.")
+  }
+}
+var andy = new Instructor('Andy', 'Resin Laying Deer Figurine, Gold')
 ```
 
 ## Question 12
@@ -162,13 +195,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> To show content from the embedded ruby onto the screen, yield needs an equal sign. <%= yield %>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> B is the only one that follows the John Papa styleguide and addresses separation of concerns in a way that also makes sense
 
 ### A:
 ```
@@ -230,6 +263,7 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.find({name: 'Andy'}).then(function(response){
+  response.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold"})
+}
 ```
-
