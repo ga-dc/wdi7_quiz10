@@ -30,7 +30,7 @@ You've written the following HTML. When you look at it in your browser, it's jus
 
 What's the purpose of the `alt` attribute on image tags?
 
-> First, it's for accessibility purposes - e.g. in case someone is using a screen reader, it will read the text of the alt tag. Second, accurate alt tags help a site's SEO ranking.
+> First, it's for accessibility purposes - e.g. in case someone is using a screen reader, it will read the text of the alt tag. Second, relevant alt tags help a site's SEO ranking, because search engines include that text when they're crawling across your site.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> .querySelectorAll returns an array of all the elements that match the selector in parentheses, and you can't apply .style to an array of elements. Since there is only one body element in a given HTML document, you should instead use .querySelector, which will return only the first instance of an element that matches the selector. 
+> .querySelectorAll returns an array of all the elements that match the selector in parentheses, and you can't apply .style directly an array - if that's what you wanted to do you'd have to loop over each item. Since there is only one body element in a given HTML document, you should instead use .querySelector, which will return only the first instance of an element that matches the selector. 
 
 ## Question 4
 
@@ -115,26 +115,25 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-app.get('/:index', function(req, res) {
+app.get('/items/:index', function(req, res) {
   res.send("Show")
 })
-app.post('/:index', function(req, res) {
+app.post('/items', function(req, res) {
   res.send("Create")
 })
-app.delete('/:index', function(req, res) {
+app.delete('/items/:index', function(req, res) {
   res.send("Delete")
 })
-app.put('/:index', function(req, res) {
+app.put('/items/:index', function(req, res) {
   res.send("Edit")
 })
 
 // NOTE: you would also need forms for Create and Edit, which might look like this:
-
-app.get('/new', function(req, res) {
+app.get('/items/new', function(req, res) {
   // render form
 })
 
-app.get ('/edit/:index', function(req, res) {
+app.get('items/:index/edit', function(req, res) {
   // render form
 }}
 
@@ -149,7 +148,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> @artist.save! with throw a fatal error if a validation fails. @artist.save won't give you an error message if it fails.
+> @artist.save! will throw a fatal error if a validation fails. @artist.save won't give you an error message at all if it fails.
 
 ## Question 10
 
@@ -214,7 +213,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> The !DOCTYPE html and title tags are not closed (I don't think I accidentally deleted those myself ...?). Also, the yield tag needs a clown hat after the first bracket in order to display: <%= yield %>
+> The !DOCTYPE html and closing title tags don't have their closing bracket (I don't think I accidentally deleted those myself ...?). Also, the yield tag needs a clown hat after the first bracket in order to display: <%= yield %>
 
 ## Question 13
 
