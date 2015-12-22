@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> You didn't close the Title tag.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> First, it's for accessibility purposes - e.g. in case someone is using a screen reader, it will read the text of the alt tag. Second, accurate alt tags help a site's SEO ranking.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> .querySelectorAll returns an array of all the elements that match the selector in parentheses, and you can't apply .style to an array of elements. Since there is only one body element in a given HTML document, you should instead use .querySelector, which will return only the first instance of an element that matches the selector. 
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> CSS is constructed with colons, not equals signs. It should read `background-color: "red";`.
 
 ## Question 5
 
@@ -61,17 +61,21 @@ body{
 
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
+
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
+$ touch README.md
+
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+
 $ git merge juan/feature
+$ git remote add juan git@github.com/juan/project-repo.git
+$ git push origin master
+
 ```
 
 ## Question 6
@@ -81,7 +85,9 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+
+geraldo = Student.find_by(name: "Geraldo")
+pbj = Sandwich.create(type: "PBJ", student_id: geraldo.id)
 
 ```
 
@@ -92,7 +98,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 
 ```
 
@@ -106,7 +115,28 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get('/:index', function(req, res) {
+  res.send("Show")
+})
+app.post('/:index', function(req, res) {
+  res.send("Create")
+})
+app.delete('/:index', function(req, res) {
+  res.send("Delete")
+})
+app.put('/:index', function(req, res) {
+  res.send("Edit")
+})
+
+// NOTE: you would also need forms for Create and Edit, which might look like this:
+
+app.get('/new', function(req, res) {
+  // render form
+})
+
+app.get ('/edit/:index', function(req, res) {
+  // render form
+}}
 
 ```
 
@@ -119,14 +149,25 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> @artist.save! with throw a fatal error if a validation fails. @artist.save won't give you an error message if it fails.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+$("#createArtist").on("click", function(){
+  $.ajax({
+    type: 'POST',
+    data: {artist: "Resin Laying Deer Figurine, Gold"},
+    dataType: 'json',
+    url: "http://tunr.com/artists"
+  }).done(function(response) {
+    alert("All done!");
+  }).fail(function(response){
+    console.log("Something went wrong.");
+  })
+})
 
 ```
 
@@ -139,7 +180,18 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Instructor(name) {
+  this.name = name;
+}
+
+Instructor.prototype.receivePresent = function(present) {
+  console.log(this.name + " promptly drops the " + present + " on the floor.");
+}
+
+var andy = new Instructor("Andy");
+Andy.receivePresent("Resin Laying Deer Figurine, Gold");
+
+
 
 ```
 
@@ -162,13 +214,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> The !DOCTYPE html and title tags are not closed (I don't think I accidentally deleted those myself ...?). Also, the yield tag needs a clown hat after the first bracket in order to display: <%= yield %>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> B is the best option. The most common convention is to organize files by the model they're referring to, rather than the kind of file (controller vs directive vs view). Both A and C, to different extents, organize their files according to kind.
 
 ### A:
 ```
