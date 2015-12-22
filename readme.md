@@ -23,26 +23,15 @@ You've written the following HTML. When you look at it in your browser, it's jus
   </body>
 </html>
 ```
+> I've forgotten to close my title tag.
 
-I've forgotten to close my title tag.
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Quiz</title>
-  </head>
-  <body>
-    <h1>What a great site.</h1>
-  </body>
-</html>
-```
 
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-The 'alt' tag is key for accessibility. If the image is unable to render as an image or is disabled on the client side, then your end user can still understand the purpose of that image.
+> The 'alt' tag is key for accessibility. If the image is unable to render as an image or is disabled on the client side, then your end user can still understand the purpose of that image.
 
 ## Question 3
 
@@ -53,7 +42,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> querySelectorAll is going to give me back an array of elements matching the tag "body". I should use querySelector to just select the body.
 
 ## Question 4
 
@@ -65,14 +54,7 @@ body{
 }
 ```
 
-Incorrect syntax. To fix the error, change the equal sign to a colon and remove the parenthesis from around "red".
-
-```css
-body{
-  background-color: red;
-}
-```
-
+> Incorrect syntax. To fix the error, change the equal sign to a colon and remove the parenthesis from around "red".
 
 ## Question 5
 
@@ -100,17 +82,22 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
-Jen's Answer
-First, let's find Geraldo (an already existing student).
+> First, let's find Geraldo (an already existing student).
+
 ```rb
 geraldo = Student.where(name: "Geraldo")
 ```
 
-Now I can use this variable to assign our new sandwich to Geraldo.
+> Now I can use this variable to assign our new sandwich to Geraldo.
 
 ```rb
 pbj = Sandwich.create(type: 'pbj', student: geraldo)
 
+```
+> OR
+
+```rb
+pbj = geraldo.sandwiches.create(type: "pbj")
 ```
 
 ## Question 7
@@ -169,7 +156,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-Both instances will save a record. The second version with the added bang ensures that the app will throw an error if a validation fails. Without the bang, it fails silently meaning I wouldn't know if the validation failed without checking.
+> Both instances will save a record. The second version with the added bang ensures that the app will throw an error if a validation fails. Without the bang, it fails silently meaning I wouldn't know if the validation failed without checking.
 
 ## Question 10
 
@@ -232,17 +219,14 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-I need to include a equal sign within the party had to render the yield.
-
-<%= yield %>
+> I need to include a equal sign within the party hats to properly render the contents in "yield"
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-Jen's Answer:
 
-Option B is the most "correct" way demonstrated of the three options. This approach keeps views and controllers for a particular feature grouped together. With Angular, best practices in organization revolve around making sure the code is modular and grouping features into little mini applications. Cited benefits include scalability, maintainability, debugging, and testing.
+> Option B is the most "correct" way demonstrated of the three options. This approach keeps views and controllers for a particular feature grouped together. With Angular, best practices in organization revolve around making sure the code is modular and grouping features into little mini applications. Cited benefits include scalability, maintainability, debugging, and testing.
 
 *  [Resource](https://scotch.io/tutorials/angularjs-best-practices-directory-structure)
 
@@ -306,9 +290,7 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-var andy = Instructor.find(function, (err, instructors){
-  if (err) return console.log(err);
-})
-
-andy.wishlist_items.save({description: "Resin Laying Deer Figurine, Gold"});
+Instructor.find({name: "Andy"}).then(function(gift){
+  gift.wishlist_items.insert({description: "Resin Laying Deer Figurine, Gold"});
+});
 ```
