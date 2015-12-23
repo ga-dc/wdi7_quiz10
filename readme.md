@@ -24,13 +24,14 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The closing title tag is missing.
+The <title> tag is required in all HTML documents and it defines the title of the document. The title element defines the title in the browser toolbar, provides the title for the page when it's added to favorites, and displays the title for the page in search-engine results.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The alt attribute specifies an alternate text for an image, if the image cannot be displayed. The alt attribute provides alternative information for an image if a user for some reason cannot view it. It is required.
 
 ## Question 3
 
@@ -53,7 +54,10 @@ body{
 }
 ```
 
-> Your answer...
+> It should be written like this:
+body {
+  background-color: red;
+}
 
 ## Question 5
 
@@ -72,6 +76,19 @@ $ cd project-repo
 $ git init project-repo
 $ git add .
 $ git merge juan/feature
+
+MY ANSWER
+$ git remote add origin git@github.com/username/project-repo.git
+$ cd project-repo
+$ git init project-repo
+$ touch README.md
+$ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
+$ git merge juan/feature
+$ git push origin master
+
 ```
 
 ## Question 6
@@ -232,4 +249,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
