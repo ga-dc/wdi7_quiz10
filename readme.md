@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> I forgot to close my title tag! Silly me.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The 'alt' attribute just labels the image with a text description when it is hovered over, clicked, or cannot be displayed for some reason. Also, for the visually impaired.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> Erm... it needs to be .querySelector? Not .querySelectorAll
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> It's throwing an error because of you syntax, silly! Replace that '=' with a ':' and get rid of those quotes around red.
 
 ## Question 5
 
@@ -62,17 +62,19 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
+
+(Everthing I know I learned from @JenPen)
 
 ## Question 6
 
@@ -81,18 +83,25 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+geradlo = Student.create(name: "Geraldo")
+Sandwich.create(type: "pbj", student_id: "Geraldo")
+
+#I don't know geradlo's id number
 
 ```
 
 ## Question 7
 
-Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`, and `orange`.
+Using Ruby, instantiate an array called `fruits` that contains `pineapple`, `banana`, and `kiwi`.
 
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["pineapple", "banana", "kiwi"]
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
+#grammar check
 
 ```
 
@@ -103,11 +112,25 @@ Write one Express route for each of four HTTP methods.
 Then, make each route respond with a one-word string containing the RESTful action that would most likely be associated with this route.
 
 ```js
+
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get("/", function(req, res){
+  res.send("Read");
+});
 
+app.post("/", function(req, res){
+  res.send("Create");
+});
+
+app.put("/", function(req, res){
+  res.send("Update");
+});
+
+app.delete("/", function(req, res){
+  res.send("Destroy");
+});
 ```
 
 ## Question 9
@@ -119,14 +142,23 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> The bang will tell you if `@artist` is not saved right by throwing an error or breaking. Without the bang, there will be no error- thus failing silently.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+$.ajax({
+  url: "http://tunr.com/artists",
+  type: "post",
+  data: {artist: {name: "Resin Laying Deer Figurine, Gold"}}
+  dataType: "json"
+}).done(function(response){
+  alert("All done!");
+}).fail(function(response){
+  alert("Nope. Try again" + response);
+})
 
 ```
 
@@ -139,7 +171,16 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor = function(name){
+  this.name = name;
+}
+
+Instructor.prototype.receivePresent = function(gift){
+    console.log(this.name + " promptly drops the " + gift + " on the floor.")
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 
 ```
 
@@ -232,4 +273,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
