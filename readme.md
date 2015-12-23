@@ -64,10 +64,9 @@ All the steps for one way of doing the above have been written below, but in the
 
 ```
 $ cd project-repo
-$ touch README.md
-
 $ git init project-repo
 $ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
 $ git commit -m "initial commit"
 $ git push origin master
