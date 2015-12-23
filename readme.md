@@ -152,8 +152,14 @@ What is the difference between the two following lines of code?
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-
-
+$.ajax({
+  type: "POST",
+  url: http://tunr.com/artists,
+  dataType: "json",
+  data: {name:"Resin Laying Deer Figurine, Gold"}
+}).done(function(response){
+  alert("All done!");
+});
 ```
 
 ## Question 11
@@ -165,8 +171,15 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor = function (name) {
+  this.name = name;
+  this.receivePresent = function (gift) {
+    console.log(this.name + " promptly drops the " + gift + " on the floor.");
+  };
+};
 
+var andy = new Instructor ("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 ```
 
 ## Question 12
@@ -188,13 +201,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> Missing a closing ">" on the first line and on the "</title". Also "<% yield %> should read "<%= yield %>".
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> Option B is the method we used in class. It intuitively makes sense to put all of our logic related to artists in the same artists/ directory. It make sense for the controller related to a view/model to be in that same folder.
 
 ### A:
 ```
@@ -256,5 +269,15 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+var andy = Instructor.findOne(name: "Andy")
+  .then(function(err, doc){
+    if (!err) {
+      doc.wishlistItems.create({description: "Resin Laying Deer Figurine, Gold"});
+      doc.save(function(err){
+        if(err) {
+          console.log(err);
+        }
+      })
+    }
+  });
 ```
