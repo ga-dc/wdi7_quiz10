@@ -94,9 +94,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-fruits = ['apple', 'banana', 'orange'].each
-fruits.each { |fruit| puts "I'd like to eat a [fruit]" once for each fruit.""}
-
+fruits = ['apple', 'banana', 'orange']
+fruits.each do |fruit|
+  puts "I'd like to eat a [fruit]" once for each fruit.""}
+end
 ```
 
 ## Question 8
@@ -135,7 +136,8 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-@artist.save -
+@artist.save - Stores an instance variable
+@artist.save!- Stores an instance variable explicitly and it cannot be changed
 
 ## Question 10
 
