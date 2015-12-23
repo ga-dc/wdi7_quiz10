@@ -72,8 +72,8 @@ $ git add .
 $ git commit -m "initial commit"
 $ git push origin master
 
-$ git merge juan/feature
 $ git remote add juan git@github.com/juan/project-repo.git
+$ git merge juan/feature
 $ git push origin master
 
 ```
