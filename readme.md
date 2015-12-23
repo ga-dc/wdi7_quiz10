@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+You need a closing title tag </title>
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+Text used to describe the image if the image cannot be displayed on the browser
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+querySelectorAll will return an array so you would need to use document.querySelector("body") in order to set the a backgroundColor
 
 ## Question 4
 
@@ -53,7 +53,11 @@ body{
 }
 ```
 
-> Your answer...
+The equal sign and the quotation marks around red will both throw an error, instead it should be:
+
+body{
+  background-color: red;
+}
 
 ## Question 5
 
@@ -62,16 +66,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,8 +85,8 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
-
+best_pbj = new Sandwich(type: "pbj", student_id: Juan).
+best_pbj.save
 ```
 
 ## Question 7
@@ -92,7 +96,12 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+
+fruits = ["apple", "banana", "orange"]
+
+fruits.each do |fruit|
+  print "I'd like to eat a " + fruit
+end
 
 ```
 
@@ -106,7 +115,9 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.get("/", function(req, res){
+  res.send("THIS IS A GET REQUEST")
+});
 
 ```
 
@@ -232,4 +243,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
