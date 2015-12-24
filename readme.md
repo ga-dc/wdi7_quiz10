@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+There's no </title> tag.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+Alt attribute gives a label to images, which can be useful if a page is slow to load, or for users with disabilities.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+querySelectorAll returns an array. You could do just document.body
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+It should be background-color: red;
 
 ## Question 5
 
@@ -74,6 +74,18 @@ $ git add .
 $ git merge juan/feature
 ```
 
+$ cd project-repo
+$ git init project-repo
+$ touch README.md
+$ git remote add origin git@github.com/username/project-repo.git
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
+$ git merge juan/feature
+$ git add .
+$ git push origin master
+
+
 ## Question 6
 
 Your Rails database has two tables. `students` has the columns `id` and `name`, and `sandwiches` has the columns `id`, `type`, and `student_id`.
@@ -92,7 +104,11 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ['apple','banana','orange']
+
+fruits.each do |fruit|
+    puts "I'd like to eat a #{fruit}"
+end
 
 ```
 
@@ -119,14 +135,21 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+The bang causes it to show an error if the command is unsuccessful.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+  $.ajax({
+    url: "http://tunr.com/artists",
+    type: "post",
+    dataType: "json",
+     data: {artist:{name: 'Resin Laying Deer Figurine, Gold'}}
+  }).done(function(){
+      alert("All done!")
+   })
 
 ```
 
@@ -162,13 +185,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+The yield should look like this <%= yield %>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+B is the best because it separates the two models, artists and songs.
 
 ### A:
 ```
@@ -232,4 +255,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
