@@ -162,8 +162,11 @@ What is the difference between the two following lines of code?
 @artist.save
 @artist.save!
 ```
+```
+ANSWER:
 
 @artist.save! will raise an error if there is an exception to it being saved to the database. On the other hand, @artist.save will not raise an error, and will return false if it fails to save
+```
 
 ## Question 10
 
