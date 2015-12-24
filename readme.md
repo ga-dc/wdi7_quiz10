@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> Because <title> doesn't have a closing tag, the body and h1 elements are automatically wrapped inside the <title></title> tags - and it appears blank because the title contains meta data.  
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The alt attribute provides an alternative (in the form of text) in case the image cannot be viewed for some reason.
 
 ## Question 3
 
@@ -41,7 +41,9 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> This example returns a list of all the body elements in the HTML document. Correct form would be
+var theBody = document.querySelector('body');
+theBody.style.backgroundColor = 'red';
 
 ## Question 4
 
@@ -53,7 +55,10 @@ body{
 }
 ```
 
-> Your answer...
+> The declaration block for this css selector requires a colon instead of the equal sign between the property name and value assigned to it.
+body {
+background-color: "red";
+}
 
 ## Question 5
 
@@ -232,4 +237,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
