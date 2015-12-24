@@ -24,13 +24,16 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-You need a closing title tag </title>
+```
+The title tag is not closed! It should be:
+  </title>
+```
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-Text used to describe the image if the image cannot be displayed on the browser
+Alt provides an alternative text that describes an image if the image cannot be displayed on the browser for whatever reason, or if the user utilizes a screen reader.
 
 ## Question 3
 
@@ -40,8 +43,9 @@ Why does the following code snippet throw an error, and what would fix the error
 var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
-
+```
 querySelectorAll will return an array so you would need to use document.querySelector("body") in order to set the a backgroundColor
+```
 
 ## Question 4
 
@@ -53,11 +57,13 @@ body{
 }
 ```
 
+```
 The equal sign and the quotation marks around red will both throw an error, instead it should be:
 
 body{
   background-color: red;
 }
+```
 
 ## Question 5
 
@@ -68,7 +74,7 @@ All the steps for one way of doing the above have been written below, but in the
 ```
 $ cd project-repo
 $ git init project-repo
-$ git remote add origin git@github.com/username/project-repo.git
+$ git remote add origin $ git@github.com/username/project-repo.git
 $ touch README.md
 $ git add .
 $ git commit -m "initial commit"
@@ -85,8 +91,13 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-best_pbj = new Sandwich(type: "pbj", student_id: Juan).
-best_pbj.save
+
+geraldo = Student.create!(name: "Geraldo")
+pbj = Sandwich.create!(type: "pbj")
+
+geraldo.sandwiches = pbj
+geraldo.save
+
 ```
 
 ## Question 7
@@ -100,7 +111,7 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 fruits = ["apple", "banana", "orange"]
 
 fruits.each do |fruit|
-  print "I'd like to eat a " + fruit
+  puts "I'd like to eat a " + fruit
 end
 
 ```
@@ -115,9 +126,21 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-app.get("/", function(req, res){
-  res.send("THIS IS A GET REQUEST")
+app.get("/show", function(req, res){
+  res.send("Show")
 });
+
+app.post("/create", function(req, res){
+  res.send("Create")
+})
+
+app.put("/update", function(req, res){
+  res.send("Update")
+})
+
+app.delete("/destroy", function(req, res){
+  res.send("Destroy")
+})
 
 ```
 
@@ -130,14 +153,28 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+@artist.save! will raise an error if there is an exception to it being saved to the database. On the other hand, @artist.save will not raise an error, and will return false if it fails to save
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+
+$.ajax({
+  type: "POST",
+  dataType: "json",
+  url: "http://tunr.com/artists",
+  data: {
+    artist: {
+      name: "Resin Laying Deer Figurine, Gold"
+    }
+  }
+  }).then(function(res){
+    alert("All done!")
+  }).fail(function(res){
+    alert("FAILED!")
+  });
 
 ```
 
@@ -150,7 +187,17 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+
+var Instructor = function(name){
+  this.name = name;
+}
+
+Instructor.prototype.receivePresent = function(gift){
+  console.log(console.log(this.name + "promptly drops the" + gift + "on the floor.");
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 
 ```
 
@@ -173,13 +220,20 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+```
+<!DOCTYPE html tag is not closed and the title tag is not closed as well.  It should be:
+
+  <!DOCTYPE html>
+  <title>
+```
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+```
+B could be considered the best approach to organizing our files, and most aligned to convention in our Angular applications. It organizes all of our files related to each corresponding model over the type of file they represent
+```
 
 ### A:
 ```
@@ -241,5 +295,8 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+
+var andy = Instructor.findOne(name: "Andy")
+andy.wishlistItems.save(description: "Resin Laying Deer Figurine, Gold")
+
 ```
