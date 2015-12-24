@@ -67,16 +67,17 @@ background-color: "red";
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
+
 ```
 
 ## Question 6
@@ -86,7 +87,7 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+pbj = Sandwich.create(type: "pbj", student_id: Student.find_by(name: "Geraldo").id)
 
 ```
 
@@ -97,7 +98,12 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
+
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}."
+end
+
 
 ```
 
@@ -108,10 +114,25 @@ Write one Express route for each of four HTTP methods.
 Then, make each route respond with a one-word string containing the RESTful action that would most likely be associated with this route.
 
 ```js
+
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.post("/", function(res, req){
+  res.send("Post request to the homepage")
+});
+
+app.get("/", function(res, req){
+  res.send("Get request to the homepage")
+});
+
+app.put("/", function(res, req){
+  res.send("Update")
+});
+
+app.delete("/", function(res, req){
+  res.send("Delete")
+});
 
 ```
 
