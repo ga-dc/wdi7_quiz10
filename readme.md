@@ -173,11 +173,10 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 ```js
 var Instructor = function(name){
   this.name = name;
-}
-
-Instructor.prototype.receivePresent = function(gift){
+  Instructor.prototype.receivePresent = function(gift){
     console.log(this.name + " promptly drops the " + gift + " on the floor.")
-}
+  }
+};
 
 var andy = new Instructor("Andy");
 andy.receivePresent("Resin Laying Deer Figurine, Gold");
@@ -203,13 +202,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Close the DOCTYPE, close the title, and put an '=' after the opening yield party hats
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> B?
 
 ### A:
 ```
@@ -271,5 +270,5 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+literally no idea and too tire to look it up... perhaps tomorrow.
 ```
