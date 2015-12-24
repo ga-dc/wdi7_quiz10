@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+It's missing the closing '</title>'
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+The 'alt' attribute is for displaying alternate text if the image cannot be displayed.  Some reasons the image may not display are slow connections, incorrect source, or visual impairment of the user and the need for a screen reader.
 
 ## Question 3
 
@@ -41,7 +41,8 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+FTFY: var theBody = document.getElementsByTagName("BODY")[0];
+      theBody.style.backgroundColor = "red";
 
 ## Question 4
 
@@ -53,7 +54,7 @@ body{
 }
 ```
 
-> Your answer...
+A colon (:) should replace the equal (=) sign.
 
 ## Question 5
 
@@ -62,16 +63,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
+$ git init project-repo
+$ cd project-repo
 $ touch README.md
-$ git push origin master
+$ git add .
+$ git commit -m "initial commit"
 $ git push origin master
 $ git remote add origin git@github.com/username/project-repo.git
 $ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
-$ git init project-repo
-$ git add .
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -92,7 +93,11 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
+
+fruits.each do |fruit|
+  puts "I'd like to eat a " + fruit
+end
 
 ```
 
@@ -104,9 +109,25 @@ Then, make each route respond with a one-word string containing the RESTful acti
 
 ```js
 var express = require("express");
+
 var app = express();
 
-// Your code starts here...
+app.get("/", function(req, res){
+  res.send("index");
+});
+
+app.post("/authors/:id", function(req, res){
+  res.send("create");
+});
+
+app.put("/authors/:id", function(req, res) {
+  res.send("update");
+});
+
+app.delete("/authors/:id", function(req, res) {
+  res.send("destroy");
+});
+
 
 ```
 
@@ -119,7 +140,9 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+.save! will throw an error if not successful.
+
+.save will return true or false.
 
 ## Question 10
 
@@ -127,7 +150,18 @@ Using jQuery, write an AJAX request to `http://tunr.com/artists` that would crea
 
 ```js
 // Your code starts here...
-
+$.ajax({
+  url: http://tunr.com/artists,
+  type: "post",
+  data: {artist: {name: "Resin Laying Deer Figurine, Gold"}},
+  dataType: "json"
+}).done(function(){
+  console.log("All done!")
+}).fail(function(){
+  console.log("Fail!")
+}).always(function(){
+  console.log("This always happens!")
+})
 ```
 
 ## Question 11
@@ -140,6 +174,14 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 
 ```js
 // Your code starts here...
+function Instructor(name){
+  this.name = name;
+  this.receivePresent = function(gift){
+    console.log(name + " promptly drops the " + gift + " on the floor.")
+  }
+}
+
+var instructor = new Instructor("Andy", "Resin Laying Deer Figurine, Gold")
 
 ```
 
@@ -187,6 +229,8 @@ Of the three options below, which is the most "correct" way of organizing the fi
     song_form.html
 ```
 
+
+
 ### B:
 ```
 /js
@@ -202,6 +246,8 @@ Of the three options below, which is the most "correct" way of organizing the fi
     form.html
     form.directive.html
 ```
+
+B is the best option for organizing the files in an Angular app, because it organizes each section into basically its own mini-MVC application. Option A and C is fine for smaller apps, but once you add more controllers, views, and directives, it would require a lot of scrolling to find the required files.  
 
 ### C:
 ```
@@ -232,4 +278,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
