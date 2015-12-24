@@ -24,13 +24,14 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The closing title tag is missing.
+The <title> tag is required in all HTML documents and it defines the title of the document. The title element defines the title in the browser toolbar, provides the title for the page when it's added to favorites, and displays the title for the page in search-engine results.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The alt attribute specifies an alternate text for an image, if the image cannot be displayed. The alt attribute provides alternative information for an image if a user for some reason cannot view it. It is required.
 
 ## Question 3
 
@@ -53,7 +54,10 @@ body{
 }
 ```
 
-> Your answer...
+> It should be written like this:
+body {
+  background-color: red;
+}
 
 ## Question 5
 
@@ -72,6 +76,19 @@ $ cd project-repo
 $ git init project-repo
 $ git add .
 $ git merge juan/feature
+
+MY ANSWER
+$ git remote add origin git@github.com/username/project-repo.git
+$ cd project-repo
+$ git init project-repo
+$ touch README.md
+$ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
+$ git merge juan/feature
+$ git push origin master
+
 ```
 
 ## Question 6
@@ -81,7 +98,7 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+Sandwich.create(id:"", type: "pbj", student_id: "Geraldo")
 
 ```
 
@@ -92,8 +109,11 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ["apple", "banana", "orange"]
 
+fruits.each do |fruit|
+  puts "I'd like to eat a #{fruit}"
+end
 ```
 
 ## Question 8
@@ -106,7 +126,26 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+// GET method route
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage');
+});
+
+// POST method route
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage');
+});
+
+// DELETE method route
+app.delete('/', function (req, res) {
+  res.send('DELETE request to homepage');
+});
+
+// PUT method route
+app.put(function(req, res) {
+    res.send('PUT/UPDATE request');
+  })
+
 
 ```
 
@@ -119,14 +158,24 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> .save! - will raise an error if not successful.
+  .save - will not raise an error
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+$(".ajax_post").on("click", function(){
+  $.ajax({
+    type: 'POST',
+    data: {artist: {name: "Resin Laying Deer Figurine, Gold"}},
+    dataType: 'json',
+    url: "http://tunr.com/artists"
+  }).done(function(response) {
+    console.log(All done!);
+  })
+})
 
 ```
 
@@ -162,13 +211,19 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> <% yield %> should be <%= yield %>
+<% %> is a snippet of Rails code
+<%= %> evaluates an expression and returns a value to the page.
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> B is the most "correct" way of organizing the files in an Angular app. The LIFT guidelines:
+Locating our code is easy
+Identify code at a glance
+Flat structure as long as we can
+Try to stay DRY (Don't Repeat Yourself) or T-D
 
 ### A:
 ```
@@ -230,6 +285,9 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+addWishlist: function(req, res){
+  InstructorModel.findById(req.params.id, function(err, docs){
+    docs.wishlists.push(new WishlistModel({body: "Resin Laying Deer Figureine, Gold"}))
+  })
+}
 ```
-
