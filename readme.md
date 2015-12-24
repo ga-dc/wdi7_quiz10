@@ -25,6 +25,8 @@ You've written the following HTML. When you look at it in your browser, it's jus
 ```
 
 ```
+ANSWER:
+
 The title tag is not closed! It should be:
   </title>
 ```
@@ -33,7 +35,11 @@ The title tag is not closed! It should be:
 
 What's the purpose of the `alt` attribute on image tags?
 
+```
+ANSWER:
+
 Alt provides an alternative text that describes an image if the image cannot be displayed on the browser for whatever reason, or if the user utilizes a screen reader.
+```
 
 ## Question 3
 
@@ -44,6 +50,8 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 ```
+ANSWER:
+
 querySelectorAll will return an array so you would need to use document.querySelector("body") in order to set the a backgroundColor
 ```
 
@@ -58,6 +66,8 @@ body{
 ```
 
 ```
+ANSWER:
+
 The equal sign and the quotation marks around red will both throw an error, instead it should be:
 
 body{
@@ -221,6 +231,8 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 ```
 
 ```
+ANSWER:
+
 <!DOCTYPE html tag is not closed and the title tag is not closed as well.  It should be:
 
   <!DOCTYPE html>
@@ -232,6 +244,8 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
 ```
+ANSWER:
+
 B could be considered the best approach to organizing our files, and most aligned to convention in our Angular applications. It organizes all of our files related to each corresponding model over the type of file they represent
 ```
 
@@ -296,7 +310,23 @@ Convert the following ActiveRecord sequence to Mongoose:
 
 ```js
 
-var andy = Instructor.findOne(name: "Andy")
-andy.wishlistItems.save(description: "Resin Laying Deer Figurine, Gold")
+var andy = Instructor.findOne({name: "Andy"}), function(err, andy){
+  if(err){
+    throw err
+  }
+  else {
+    var item = {description: "Resin Laying Deer Figurine, Gold"}
+    andy.wishlistItems.push(new WishlistItems(item));
+    andy.save(function(err, res){
+      if(err){
+        res.json({message: "Sorry, there was an error saving your wish list!"});
+      }
+      else{
+        res.json({message: "Your wish list item was saved!"})
+      }
+    });
+  }
+});
+
 
 ```
