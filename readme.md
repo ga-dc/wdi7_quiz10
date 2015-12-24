@@ -25,12 +25,14 @@ You've written the following HTML. When you look at it in your browser, it's jus
 ```
 
 > Your answer...
+There is no closing tag for the <title> in the <head>.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
 > Your answer...
+So people who can't see but have special programs that read things out loud to them can know what the content of the picture is.
 
 ## Question 3
 
@@ -42,6 +44,7 @@ theBody.style.backgroundColor = "red";
 ```
 
 > Your answer...
+I think since there is only one body you would use querySelector instead of querySelectorAll.
 
 ## Question 4
 
@@ -54,6 +57,7 @@ body{
 ```
 
 > Your answer...
+The quotation marks and also the equals sign cause the error.  Remove quotes and use colon instead.
 
 ## Question 5
 
@@ -62,15 +66,15 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
+$ git push origin master
 $ git merge juan/feature
 ```
 
@@ -82,6 +86,10 @@ Use ActiveRecord to create a new `pbj` sandwich and make it belong to the studen
 
 ```rb
 # Your answer...
+geraldo = Student.create(name: "Geraldo")
+pbj = Sandwich.create(type: "pbj", student_id: 1)
+geraldo.save
+pbj.save
 
 ```
 
@@ -93,6 +101,11 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 
 ```rb
 # Your answer...
+fruits = ["apple", "banana", "orange"]
+fruits.each do |fruit|
+  puts "I'd like to eat a " + fruit
+end
+
 
 ```
 
@@ -107,7 +120,18 @@ var express = require("express");
 var app = express();
 
 // Your code starts here...
-
+app.get("/",function(req,res){
+  res.send("index")
+})
+app.post("/", function(req, res){
+  res.send("create")
+})
+app.put("/", function(req, res){
+  res.send("update")
+})
+app.delete("/", function(req, res){
+  res.send("delete")
+})
 ```
 
 ## Question 9
@@ -120,6 +144,7 @@ What is the difference between the two following lines of code?
 ```
 
 > Your answer...
+@artist.save will save the artist but not affect other objects referencing the artist.  With the bang changes the object itself.
 
 ## Question 10
 
@@ -127,7 +152,13 @@ Using jQuery, write an AJAX request to `http://tunr.com/artists` that would crea
 
 ```js
 // Your code starts here...
-
+$.ajax({
+  url: 'http://tunr.com/artists' + 'Resin Laying Deer Figurine, Gold'
+  type: 'post',
+  datatype: 'json'
+}).done(function{
+  alert('All Done!')
+})
 ```
 
 ## Question 11
@@ -140,7 +171,15 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 
 ```js
 // Your code starts here...
+function Instructor(name) {
+  this.name = name
+  this.receivePresent = function(gift){
+    console.log(name + " promptly drops the " gift  + " on the floor.")
+  }
+}
 
+var andy = new Instructor("andy")
+andy.receivePresent("Resin Laying Deer Figurine, Gold")
 ```
 
 ## Question 12
@@ -163,13 +202,14 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 ```
 
 > Your answer...
+There needs to be an equals sign in the party hats around the yield statement.  Also the <!DOCTYPE html> needs the closing carrot thing.
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
 > Your answer...
-
+Based on what we used in class, option B would be the best way.  It organizes things by the model, which I suppose is better.
 ### A:
 ```
 /js
@@ -231,5 +271,10 @@ Convert the following ActiveRecord sequence to Mongoose:
 
 ```js
 // Your answer...
+db.instructors.find(name: "Andy")
+db.wishlist_items.insert(
+  {
+    wishlist_item: "Resin Laying Deer Figurine, Gold"
+  }
+)
 ```
-
