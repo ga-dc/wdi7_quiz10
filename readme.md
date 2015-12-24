@@ -105,8 +105,8 @@ Use ActiveRecord to create a new `pbj` sandwich and make it belong to the studen
 geraldo = Student.create!(name: "Geraldo")
 pbj = Sandwich.create!(type: "pbj")
 
-geraldo.sandwiches = pbj
-geraldo.save
+pbj.student = geraldo
+pbj.save
 
 ```
 
