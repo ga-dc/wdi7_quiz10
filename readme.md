@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> This example returns a list of all the body elements in the HTML document. Correct form would be
+>This example returns a list of all the body elements in the HTML document. Correct form would be
 var theBody = document.querySelector('body');
 theBody.style.backgroundColor = 'red';
 
@@ -54,8 +54,7 @@ body{
   background-color = "red";
 }
 ```
-
-> The declaration block for this css selector requires a colon instead of the equal sign between the property name and value assigned to it.
+>The declaration block for this css selector requires a colon instead of the equal sign between the property name and value assigned to it.
 body {
 background-color: "red";
 }
@@ -145,14 +144,27 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+>save! will throw an error if unsuccessful
+save will simply return true or false
+save! is probably best option for testing purposes.
+
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+
+  $.ajax({
+    type: 'POST',
+    data: {artist: {name: "Resin Laying Deer Figurine Gold"}},
+    dataType: 'json',
+    url: "http://tunr.com/artists"
+  }).done(function(response) {
+    alert("All done!");
+  }).fail(function(response){
+    alert("Sorry boss!");
+  });
 
 ```
 
@@ -165,7 +177,15 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Instructor (name) {
+  this.name = name;
+  this.receivePresent = function(gift){
+    console.log(this.name + "promptly drops the" + gift + "on the floor");
+  };
+};
+
+var Andy = new Instructor(Andy);
+Andy.receivePresent("Resin Laying Deer Figurine, Gold");
 
 ```
 
@@ -188,13 +208,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+>Syntax errors. The closing title tag is missing the greater than sign. yield is missing an equal sign.
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> Option B seems to be a better option for organizing files in an Angular file. Not only makes it easier to find files but also understand the workflow better.  
 
 ### A:
 ```
@@ -256,5 +276,6 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+var andy = Instructor.findOne({'name': 'Andy'});
+var present = andy.wishlist_items.create({'description': 'Resin Laying Deer Figurine'});
 ```
