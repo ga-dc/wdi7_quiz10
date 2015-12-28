@@ -53,7 +53,15 @@ body{
 }
 ```
 
-> CSS properties are followed by a colon, not an equals sign.
+> CSS properties and values are delimited by a colon, not an equals sign.
+> The quotes around the CSS property value are not acceptable, except in special cases (e.g. Font family).
+
+```css
+body{
+  background-color: red;
+}
+```
+
 
 ## Question 5
 
@@ -62,7 +70,8 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ git init 
+$ git init project-repo
+$ cd project-repo
 $ touch README.md
 $ git add .
 $ git commit -m "initial commit"
@@ -80,12 +89,15 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-Student.find_by(name: "Geraldo").sandwiches.create(type: "pbj")
+geraldo = Student.find_by(name: "Geraldo")
+geraldo.sandwiches.create(type: "pbj")
 # or
-@sammich = Sandwich.create(type: "pbj")
-@student = Student.find_by(name: "Geraldo")
-@sammich.update(student: @student)
+pbj_sammich = Sandwich.create(type: "pbj")
+geraldo = Student.find_by(name: "Geraldo")
+pbj_sammich.update(student: geraldo)
 ```
+
+Bonus: "type" is a reserved column name in Rails.  We should avoid using it.
 
 ## Question 7
 
@@ -139,7 +151,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> If validations fail, the first line will fail silently, while the second line will throw a fatal error.
+> If validations fail, the first line will fail silently, returning `false` and adding to @artists.errors, while `@artist.save!` will raise an ActiveRecord::RecordInvalid error.
 
 ## Question 10
 
@@ -201,7 +213,8 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> We need to use `<%= yield %>` to render the action's view.
+> Note: also the DOCTYPE statement *should* be closed.
 
 ## Question 13
 
@@ -271,9 +284,8 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-Instructor.findOne({name: "Andy"), function(err, docs){
-  docs.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold");
-  docs.save();
+Instructor.findOne({name: "Andy"), function(err, andy){
+  andy.wishlist_items.push({description: "Resin Laying Deer Figurine, Gold");
+  andy.save();
 });
 ```
-
