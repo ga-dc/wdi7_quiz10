@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> Your answer... The title needs a closing tag.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> Your answer... Alt displays text in the event that the image does not load. This is helpful for maintaining some functionality in the event that someone is viewing the website on a browser or device that isn't compatible.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> Your answer... querySelectorAll is used to select multiple items. If only one exitsts it will throw an error. Using querySelector instead will fix the problem.
 
 ## Question 4
 
@@ -53,7 +53,11 @@ body{
 }
 ```
 
-> Your answer...
+> Your answer... Because of the = and the quotation marks. The solution:
+>
+> body {
+>   background-color: red;
+> }
 
 ## Question 5
 
@@ -62,16 +66,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
 $ git init project-repo
+$ cd project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ touch README.md
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,8 +85,8 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
-
+gerldo = Student.find_by(name: "Gerlado")   
+pbj = Sandwich.create(type: "Peanut Butter & Jelly", student_id: gerlado.id)
 ```
 
 ## Question 7
@@ -93,7 +97,11 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 
 ```rb
 # Your answer...
+fruits = ['apple', 'banana', 'orange']
 
+fruits.each do |fruit|
+    print "I'd like to eat a #{fruit}\n"
+end
 ```
 
 ## Question 8
@@ -106,8 +114,7 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
-
+// Your code starts here... I'm not sure how to do this without looking it up. I'll be reviewing Express this week (and the entire MEAN stack) which is what I have by far the most trouble with.
 ```
 
 ## Question 9
@@ -119,15 +126,25 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> Your answer... .save with an exclamation mark will throw an error if it fails.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
-
+// Your code starts here... I needed to review a little before writing what I believe to be one possible solution.
+$.ajax({
+  url: 'http://tunr.com/artist'
+  type: 'POST',
+  data: {
+    artist: {
+      name: 'Resin Laying Deer Figurine, Gold'
+    }
+  }.done(function() {
+    alert("All done!");
+  })
+});
 ```
 
 ## Question 11
@@ -140,7 +157,16 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 
 ```js
 // Your code starts here...
+function Instructor(name) {
+  this.name = name;
+}
 
+Instructor.prototype.receivePresent = function(gift) {
+  console.log(this.name + " promptly drops the " + gift + " on the floor.");
+}
+
+var andy = new Instructor("Andy");
+andy.receivePresent("Resin Laying Deer Figurine, Gold");
 ```
 
 ## Question 12
@@ -162,13 +188,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> Your answer... Closing ">" symbols are needed at the end of !DOCTYPE and title. Yield also needs an "=" sign:  <%= yield %>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> Your answer... I believe B is the way we learned to structure the files in class. I'm not yet sure if I prefer this way of organizing yet as I found that it seemed to get out of hand pretty fast during project 3. As I understand it, though, it keeps all the files that use the same collections to be grouped together. My gut reaction to this is that I'd prefer adding sub-folders for controllers and directives within each folder ('artists > controllers' or 'artists > directives' for example.)
 
 ### A:
 ```
@@ -230,6 +256,5 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+// Your answer... really lost when it comes to the MEAN stack. As stated above, I'll be spending time with it this week.
 ```
-
