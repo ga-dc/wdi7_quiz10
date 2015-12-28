@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The <title> tag was never closed. As a result, the browser treats the entire html document as a long title tag description- and this particular text is never visible to the user on the page itself.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> The alt attribute is required to help the blind navigate the web. Alt attribute description's also provide critical info for Search Engine's that seek to provide web searches with not only sites with relevant text but also sites with relevant images.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> background and color should be separated with a -.
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> The CSS command should have a colon and not an equals sign... also it doesn't require quotations around red.
 
 ## Question 5
 
@@ -62,16 +62,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
+$ touch README.md
 $ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
 $ git add .
+ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,7 +81,8 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+create.Student(id: 0, name: "Geraldo")
+create.Sandwich(id: 0, type: "pbj", student_id: 0)
 
 ```
 
@@ -92,7 +93,8 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+var fruits = ["apple", "banana", "orange"];
+puts : "I'd like to eat a + [fruits] ."
 
 ```
 
@@ -106,7 +108,8 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+// CREATE READ/SHOW UPDATE DESTROY- don't recall.
+
 
 ```
 
@@ -119,15 +122,16 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> The second command with the ! bang will commit the save. Similar to a -f force command.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
-
+$(.create).artist(name:"Resin Laying Deer Figurine, Gold");
+  prompt("All done!");
+forgot the AJAX link syntax.
 ```
 
 ## Question 11
@@ -139,7 +143,13 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor =
+[
+  name:
+  function: receivePresent(gift)
+    console.log( name + "promptly drops the"  +  gift + "on the floor." )
+
+]
 
 ```
 
@@ -162,7 +172,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Failed to close <!DOCTYPE html tag, failed to close <title tag, the yield command is missing two = after the left percent sign.
 
 ## Question 13
 
@@ -219,7 +229,9 @@ Of the three options below, which is the most "correct" way of organizing the fi
   songs/
     form.html
 ```
-
+```
+Option A is the correct Angular format because it separates the Controller, Index and Form as the primary forks - and does not arrange the file structure in the style of a psql db system.
+```
 ## Question 14
 
 Convert the following ActiveRecord sequence to Mongoose:
@@ -230,6 +242,6 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+find.Andy
+find.Resin_Laying_Deer_Figurine,Gold
 ```
-
