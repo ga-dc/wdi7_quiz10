@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> The <title> tag is not closed. add </title>
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> Provides text information if the picture doesn't load up. Also in use for disabled users who are using a screen reader.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> The query selected was named wrong. It should be "theBody".
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> The correct syntax form is background-color: red;
 
 ## Question 5
 
@@ -62,17 +62,25 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
+
+```
+
+> ANSWER
 $ cd project-repo
 $ git init project-repo
-$ git add .
+touch README.md
+$ git remote add origin git@github.com/username/project-repo.git
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
-```
+$ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+
+
+
+
+
+
 
 ## Question 6
 
@@ -81,7 +89,12 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+
+
+# pbj = Sandwich.new(id: 1, type "Peanut-Butter & Jelly", student_id: 1)
+
+# Geraldo = Student.create(id: 1, name: Geraldo )
+
 
 ```
 
@@ -92,7 +105,11 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+# fruits = ['apple', 'banana', 'orange']
+
+fruits.each do |fruit|
+    puts I'd like to eat a |fruit|
+end
 
 ```
 
@@ -106,7 +123,22 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+// app.get('/', function (req, res) {
+  res.send('/')
+  });
+
+  app.post('/', function (req, res) {
+    res.send('/')
+    });
+
+    app.put('/', function (req, res) {
+      res.send('/')
+      });
+
+      app.delete('/', function (req, res) {
+        res.send('/')
+        });
+}
 
 ```
 
@@ -119,15 +151,20 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> the bang (!) modifies the @artist object its called on.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
-
+// $(ajax).on("click", function(){
+  type: 'artist',
+  url: "http://tunr.com/artists"
+  name: "Resin Laying Deer Figurine, Gold"
+  });
+  alert("All done!");
+});
 ```
 
 ## Question 11
@@ -139,7 +176,15 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+// var instructor {
+  name: "",
+  receivePresent: function(gift){
+    console.log(name + " promptly drops " + .this + " on the floor")
+  }
+
+Andy.receivePresent("Resin Laying Deer Figurine, Gold")
+
+}
 
 ```
 
@@ -162,7 +207,7 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> title tag needs to be closed
 
 ## Question 13
 
@@ -219,6 +264,8 @@ Of the three options below, which is the most "correct" way of organizing the fi
   songs/
     form.html
 ```
+// ANSWER = B Organzition of Controller & HTML files
+
 
 ## Question 14
 
@@ -230,6 +277,7 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.find(name), function () {
+  return (wishlist items)
+};
 ```
-
