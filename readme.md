@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Because there is no closing title tag and there is no text in specified tags for this page.
+Because there is no closing title tag and there is no text in specified tags for this page.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> The alt attribute provides alternative information for an image if a user for some reason cannot view it.
+ The alt attribute provides alternative information for an image if a user for some reason cannot view it.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> document.body should be used instead of querySelectorAll.
+document.body should be used instead of querySelectorAll.
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> The color red should not be called as a string, there is no need for quotes in CSS. And instead of a equal sign there should be a : colon in its place.
+ The color red should not be called as a string, there is no need for quotes in CSS. And instead of a equal sign there should be a : colon in its place.
 Example
 body{
   background-color: red;
