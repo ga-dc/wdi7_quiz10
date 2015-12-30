@@ -213,8 +213,11 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> We need to use `<%= yield %>` to render the action's view.
-> Note: also the DOCTYPE statement *should* be closed.
+> `<% yield %>` should be `<%= yield %>`, with an equals sign.
+
+> The DOCTYPE tag should be closed.
+
+> The `<title>` end-tag should be closed.
 
 ## Question 13
 
