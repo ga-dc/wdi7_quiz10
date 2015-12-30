@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> There is no closing </title> tag.
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> alt attribute takes strings value and displays on screen when image is not available.
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> querySelectorAll returns array of elements that's why it's throwing an error.
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> It's throwing an error because syntax is wrong. It should be background-color: red;
 
 ## Question 5
 
@@ -62,16 +62,17 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ touch README.md
+$ git remote add origin git@github.com/username/project-repo.git
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
+
 ```
 
 ## Question 6
@@ -81,7 +82,9 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+geraldo = Student.create(name:'Geraldo');
+geraldo.sanwiches.create(type:'pbj');
+
 
 ```
 
@@ -92,8 +95,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
-
+fruits = ['apple', 'banana', 'orange'];
+fruits.each do |fruit|
+  puts "I'd like to eat a" +fruit;
+end
 ```
 
 ## Question 8
@@ -106,7 +111,23 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+//get method
+app.get('/posts', function(req, res){
+  res.send('Read');
+})
+
+//create method
+app.post('/posts', function (req, res){
+  res.send('Create');
+})
+
+app.put('/posts/:post_id', function(req, res){
+  res.send('update')
+})
+
+app.delete('/posts/:post_id', function(req, res){
+  res.send("Delete")
+})
 
 ```
 
@@ -119,14 +140,21 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> The one with ! throws an error if the action is unsuccessful without ! wouldn't throw an error.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
-```js
-// Your code starts here...
+```
+$.ajax({
+  url: "http://tunr.com/artists";
+  method: "post",
+  data: {name: 'Resin Laying Deer Figurine, Gold'},
+  dataType: "json"
+}).done(function(res){
+  alert("All done!");
+})
 
 ```
 
@@ -139,7 +167,13 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Instructor(name, gift){
+  var.self = this;
+  this.name= name;
+  this.receivePresent = function (gift) {
+    console.log(self.name + "promptly drops the" +gift+ "on the floor.")
+  }
+}
 
 ```
 
@@ -162,13 +196,12 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
-
+> There is syntax error, it should be <%= yield %>
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> B. It keeps all logic, views and controller in same folder, making it easy to read.
 
 ### A:
 ```
@@ -229,7 +262,6 @@ Convert the following ActiveRecord sequence to Mongoose:
 @andy.wishlist_items.create(description: "Resin Laying Deer Figurine, Gold")
 ```
 
-```js
-// Your answer...
 ```
 
+```
