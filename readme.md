@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+Your are missing </title> after Quiz
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+Twofold: First, for screen readers - users that cannot see the page but use a screen reading program. Second, to act as a placeholder in case the image does not appear properly or for development.
 
 ## Question 3
 
@@ -40,8 +40,8 @@ Why does the following code snippet throw an error, and what would fix the error
 var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
-
-> Your answer...
+the .style() prototype takes the style and modification as an argument.
+theBody.style(background-color = "red");
 
 ## Question 4
 
@@ -52,8 +52,10 @@ body{
   background-color = "red";
 }
 ```
-
-> Your answer...
+Use : instead of =
+body {
+    background: "red";
+}
 
 ## Question 5
 
@@ -62,16 +64,16 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
+$ git init project-repo
+$ cd project-repo
+$ git add .
+$ git commit -m "initial commit"
+$ git remote add origin git@github.com/username/project-repo.git
 $ touch README.md
 $ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
 $ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
-$ git init project-repo
-$ git add .
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
@@ -81,7 +83,9 @@ Your Rails database has two tables. `students` has the columns `id` and `name`, 
 Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
 
 ```rb
-# Your answer...
+
+Geraldo = Student.where("name = 'Geraldo'");
+Sandwich.create({type: 'pbj', student_id: Geraldo.id})
 
 ```
 
@@ -92,7 +96,10 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+var fruits = ['apple', 'banana', 'orange'];
+fruits.each do |fruit|
+puts "I'd like to eat a #{fruit}."
+end
 
 ```
 
@@ -106,8 +113,21 @@ Then, make each route respond with a one-word string containing the RESTful acti
 var express = require("express");
 var app = express();
 
-// Your code starts here...
-
+app.get('a/URI/goes/here/with/:params', function(req, res){
+    res.send('This is the string you are looking for : '+ Object where('params = 'req.params.params);
+})
+app.put('a/URI/goes/here/with/:params', function(req, res){
+    var aNewObject = new Object(req.params);
+    aNewObject.save();
+    res.send('I made your new object.');
+})
+app.post('a/URI/goes/here/with/:params/:moreparams', function(req, res){
+    Object.where('parameter = ' + req.params).moreparams = req.moreparams;
+    res.send('I updated ' + req.params.params + 'with' + req.params.moreparams);
+})
+app.delete('a/URI/goes/here/with/:params', function(req, res){
+    Object.where('parameter = ' + req.params).delete();
+})
 ```
 
 ## Question 9
@@ -119,14 +139,20 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+@artist.save! will throw any and all errors.  Usually this is used with .create! to automatically .save the thing you created.
 
 ## Question 10
 
 Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
 
 ```js
-// Your code starts here...
+$.AJAX('http://tunr.com/artists', function(data){
+    var Artist = function(data){
+        this.name = data.name;
+    };
+    newArtist = new Artist(data);
+    newArtist.then(alert("All done!"));
+})
 
 ```
 
@@ -139,7 +165,14 @@ Define a Javascript constructor called 'Instructor'. Every instance of Instructo
 Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+var Instructor = function(data){
+    this.name = data.name,
+}
+Instructor.prototype{
+    function receivePresent(gift){
+        console.log(this.name + 'promptly drops the ' + gift + 'on the floor.');
+    };
+}
 
 ```
 
@@ -162,13 +195,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Missing > on line 1 & line 4.
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+B?  Because it separates concerns while proper naming conventions will keep controllers appearing alongside their views.
 
 ### A:
 ```
@@ -230,6 +263,6 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+var andy = Instructor.findOne({name: 'Andy'});
+andy.wishlist_items.push({'description: "Resin Laying Deer Figurine, Gold"'});
 ```
-
