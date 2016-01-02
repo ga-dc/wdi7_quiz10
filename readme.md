@@ -44,7 +44,13 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 ```
-Clark Answer: When I type this code into chrome's console, the error is "Cannot set property 'backgroundColor' of undefined".
+Clark Answer: When I type this code into chrome's console, the error is "Cannot set property 'backgroundColor' of undefined". There is only one body in a webpage, so I simply deleted
+querySelectorAll("body") and changed it to the following:
+
+var body = document.body
+body.style.backgroundColor = "red";
+
+Now the chrome console states that the body is "red"!!!
 ```
 ## Question 4
 
