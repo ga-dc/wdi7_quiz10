@@ -207,10 +207,10 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 Laying Deer Figurine, Gold" as the argument.
 
 ```js
-function Person(initialName) {
-  this.name = initialName;
-  this.species = "Homo Sapiens";
-  this.speak = function() {return "Hello! I'm " + this.name};
+function Instructor {
+  this.name = "Andy";
+  this.receivePresent = "Resin Laying Deer Figurine, Gold";
+  this.speak = function() {return [name] "promptly drops the"  [receivePresent] };
 }
 
 ```
