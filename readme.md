@@ -24,13 +24,16 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+```
+Clark Answer: You forgot the closing title tags "</title>"
+```
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+Clark Answer: alt serves two main purposes: 1. specifies the alternative text that is to be rendered when the element which it is applied cannot be rendered. 2. For legal purposes it is used for screen
+reading software so a blind person can hear what the image is without see it.
 
 ## Question 3
 
@@ -40,9 +43,9 @@ Why does the following code snippet throw an error, and what would fix the error
 var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
-
-> Your answer...
-
+```
+Clark Answer: When I type this code into chrome's console, the error is "Cannot set property 'backgroundColor' of undefined".
+```
 ## Question 4
 
 Why does the following code snippet throw an error, and what would fix the error?
@@ -52,12 +55,17 @@ body{
   background-color = "red";
 }
 ```
+```
+Clark Answer: The syntax is incorrect for CSS. Is should be written like this:
 
-> Your answer...
-
+body {
+  background-color: red;
+}
+```
 ## Question 5
 
-**The scenario:** You're starting a new app. You create a local repo and a repo on Github, create a readme file, and put it on Github. Then you run into Juan, who's already done a lot of the work you were planning to do. You want to pull his code down and include it in your repo, and put your combined code up on your Github repo.
+**The scenario:** You're starting a new app. You create a local repo and a repo on Github, create a readme file, and put it on Github. Then you run into Juan, who's already done a lot of the work you
+were planning to do. You want to pull his code down and include it in your repo, and put your combined code up on your Github repo.
 
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
@@ -232,4 +240,3 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```js
 // Your answer...
 ```
-
