@@ -25,16 +25,17 @@ You've written the following HTML. When you look at it in your browser, it's jus
 ```
 
 ```
-Clark Answer: You forgot the closing title tags "</title>"
+Clark Answer: You forgot the closing title tag "</title>"
 ```
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
+```
 Clark Answer: alt serves two main purposes: 1. specifies the alternative text that is to be rendered when the element which it is applied cannot be rendered. 2. For legal purposes it is used for screen
 reading software so a blind person can hear what the image is without see it.
-
+```
 ## Question 3
 
 Why does the following code snippet throw an error, and what would fix the error?
@@ -84,29 +85,49 @@ $ git add .
 $ git commit -m "initial commit"
 $ git push origin master
 $ git remote add juan git@github.com/juan/project-repo.git
-$ git push origin master
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
 
-Your Rails database has two tables. `students` has the columns `id` and `name`, and `sandwiches` has the columns `id`, `type`, and `student_id`.
+Your Rails database has two tables. `students` has the columns `id` and `name`, and
+`sandwiches` has the columns `id`, `type`, and `student_id`.
 
-Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
+Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named
+Geraldo.
 
 ```rb
-# Your answer...
+CREATE TABLE students (
+id SERIAL PRIMARY KEY,
+name TEXT NOT NULL
+);
+
+CREATE TABLE sandwiches (
+id SERIAL PRIMARY KEY,
+type TEXT NOT NULL
+student_id INT
+);
+
+Geraldo = Student.new(first_name: "Geraldo", sandwhich: "pbj" )
 
 ```
 
 ## Question 7
 
-Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`, and `orange`.
+Using Ruby, instantiate an array called `fruits` that contains `apples`, `bananas`, and
+`oranges`.
 
-Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
+Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]"
+once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ['apples', 'bananas', 'oranges']
+
+var fruits = ["apples", "bananas", "oranges"];
+for(var i = 0; i < fruits.length; i++) {
+  console.log("I like to eat " + fruits[i]);
+}
 
 ```
 
@@ -114,13 +135,28 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 
 Write one Express route for each of four HTTP methods.
 
-Then, make each route respond with a one-word string containing the RESTful action that would most likely be associated with this route.
+Then, make each route respond with a one-word string containing the RESTful action that
+would most likely be associated with this route.
 
 ```js
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.post("/create" function(req,res){
+  res.send("create comment here")
+});
+
+app.get("/read", function (req, res) {
+  res.send("read comments here")
+});
+
+app.put("/update", function(req,res){
+  res.send("update comment here")
+});
+
+app.delete("/delete", function(req,res){
+  res.send("Comment delete")
+});
 
 ```
 
@@ -133,27 +169,49 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+Clark Answer: Methods with and ! attached to the end of them usually mean that they will
+modify the object they are calling on. Save! will raise an error if not successful. Save
+will return true or false
 
 ## Question 10
 
-Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
+Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new
+artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All
+done!" when complete.
 
 ```js
-// Your code starts here...
+$(document).ready(function(){
+  $("h1").on("click", function(){
+    var url =
+    "http://tunr.com/artists"
+    $.ajax({
+      url: url,
+      type: "get",
+      dataType: "json"
+    }).done(function(){
+    alert("All done!")
 
 ```
 
 ## Question 11
 
-Due to budget cuts, GA can no longer hire new instructors. Instead they can only instantiate new instructors with Javascript.
+Due to budget cuts, GA can no longer hire new instructors. Instead they can only instantiate
+new instructors with Javascript.
 
-Define a Javascript constructor called 'Instructor'. Every instance of Instructor should have a `name` property, and a method called `receivePresent`. This method takes one argument called `gift` and, when executed, console-logs "[name] promptly drops the [gift] on the floor."
+Define a Javascript constructor called 'Instructor'. Every instance of Instructor should
+have a `name` property, and a method called `receivePresent`. This method takes one argument
+called `gift` and, when executed, console-logs "[name] promptly drops the [gift] on the
+floor."
 
-Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
+Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin
+Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Person(initialName) {
+  this.name = initialName;
+  this.species = "Homo Sapiens";
+  this.speak = function() {return "Hello! I'm " + this.name};
+}
 
 ```
 
