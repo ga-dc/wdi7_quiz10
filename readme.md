@@ -98,18 +98,11 @@ Use ActiveRecord to create a new `pbj` sandwich and make it belong to the studen
 Geraldo.
 
 ```rb
-CREATE TABLE students (
-id SERIAL PRIMARY KEY,
-name TEXT NOT NULL
-);
-
-CREATE TABLE sandwiches (
-id SERIAL PRIMARY KEY,
-type TEXT NOT NULL
-student_id INT
-);
-
-Geraldo = Student.new(first_name: "Geraldo", sandwhich: "pbj" )
+class Sandwich < ActiveRecord::Base
+   belongs_to: student
+ end
+ @geraldo = Student.find(name: "Geraldo")
+ @pbj = Sandwich.create(id: 1, type: "pbj", student_id: @geraldo.id)
 
 ```
 
@@ -124,10 +117,9 @@ once for each fruit.
 ```rb
 fruits = ['apples', 'bananas', 'oranges']
 
-var fruits = ["apples", "bananas", "oranges"];
-for(var i = 0; i < fruits.length; i++) {
-  console.log("I like to eat " + fruits[i]);
-}
+fruits.each do |fruit|
+puts "I like to eat a " + fruit
+  end
 
 ```
 
@@ -142,20 +134,20 @@ would most likely be associated with this route.
 var express = require("express");
 var app = express();
 
-app.post("/create" function(req,res){
+app.post("/anything" function(req,res){
   res.send("create comment here")
 });
 
-app.get("/read", function (req, res) {
-  res.send("read comments here")
+app.get("/something", function (req, res) {
+  res.send(read)
 });
 
-app.put("/update", function(req,res){
+app.put("/something", function(req,res){
   res.send("update comment here")
 });
 
-app.delete("/delete", function(req,res){
-  res.send("Comment delete")
+app.delete("/anything", function(req,res){
+  res.send("Destroy")
 });
 
 ```
@@ -180,16 +172,14 @@ artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box say
 done!" when complete.
 
 ```js
-$(document).ready(function(){
-  $("h1").on("click", function(){
-    var url =
-    "http://tunr.com/artists"
-    $.ajax({
-      url: url,
-      type: "get",
-      dataType: "json"
-    }).done(function(){
-    alert("All done!")
+$.ajax({
+  url: 'http://tunr.com/artists',
+  method: 'post',
+  data: {name: 'Resin Laying Deer Figurine, Gold'},
+  contentType: 'application/json'
+}).done(function(res){
+  alert('All Done!')
+})
 
 ```
 
@@ -207,17 +197,20 @@ Instantiate an instructor named 'Andy' and call its `receivePresent` method with
 Laying Deer Figurine, Gold" as the argument.
 
 ```js
-function Instructor {
-  this.name = "Andy";
-  this.receivePresent = "Resin Laying Deer Figurine, Gold";
-  this.speak = function() {return [name] "promptly drops the"  [receivePresent] };
-}
+function Instructor(name, gift){
+   var self = this;
+   this.name = name;
+   this.receivePresent = function (gift){
+     console.log(self.name + "promptly drops the "+ gift +" on the floor.")
+   }
+ }
 
 ```
 
 ## Question 12
 
-Your Rails app has the following `application.html.erb`. Nothing shows up in your browser on any of your app's pages. Why not?
+Your Rails app has the following `application.html.erb`. Nothing shows up in your browser on
+any of your app's pages. Why not?
 
 ```erb
 <!DOCTYPE html
@@ -234,13 +227,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Clark Answer </html>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+Clark Answer = B
 
 ### A:
 ```
@@ -302,5 +295,7 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.find({name: 'Andy'}).then(function(response){
+  response.wishlist_items.push({description: "resin Laying Deer Figurine, Gold"})
+}
 ```
