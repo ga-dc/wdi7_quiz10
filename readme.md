@@ -24,14 +24,18 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+```
+Clark Answer: You forgot the closing title tag "</title>"
+```
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
-
+```
+Clark Answer: alt serves two main purposes: 1. specifies the alternative text that is to be rendered when the element which it is applied cannot be rendered. 2. For legal purposes it is used for screen
+reading software so a blind person can hear what the image is without see it.
+```
 ## Question 3
 
 Why does the following code snippet throw an error, and what would fix the error?
@@ -40,9 +44,15 @@ Why does the following code snippet throw an error, and what would fix the error
 var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
+```
+Clark Answer: When I type this code into chrome's console, the error is "Cannot set property 'backgroundColor' of undefined". There is only one body in a webpage, so I simply deleted
+querySelectorAll("body") and changed it to the following:
 
-> Your answer...
+var body = document.body
+body.style.backgroundColor = "red";
 
+Now the chrome console states that the body is "red"!!!
+```
 ## Question 4
 
 Why does the following code snippet throw an error, and what would fix the error?
@@ -52,47 +62,64 @@ body{
   background-color = "red";
 }
 ```
+```
+Clark Answer: The syntax is incorrect for CSS. Is should be written like this:
 
-> Your answer...
-
+body {
+  background-color: red;
+}
+```
 ## Question 5
 
-**The scenario:** You're starting a new app. You create a local repo and a repo on Github, create a readme file, and put it on Github. Then you run into Juan, who's already done a lot of the work you were planning to do. You want to pull his code down and include it in your repo, and put your combined code up on your Github repo.
+**The scenario:** You're starting a new app. You create a local repo and a repo on Github, create a readme file, and put it on Github. Then you run into Juan, who's already done a lot of the work you
+were planning to do. You want to pull his code down and include it in your repo, and put your combined code up on your Github repo.
 
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
-$ touch README.md
-$ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
-$ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
 $ cd project-repo
 $ git init project-repo
+$ touch README.md
+$ git remote add origin git@github.com/username/project-repo.git
 $ git add .
+$ git commit -m "initial commit"
+$ git push origin master
+$ git remote add juan git@github.com/juan/project-repo.git
 $ git merge juan/feature
+$ git push origin master
 ```
 
 ## Question 6
 
-Your Rails database has two tables. `students` has the columns `id` and `name`, and `sandwiches` has the columns `id`, `type`, and `student_id`.
+Your Rails database has two tables. `students` has the columns `id` and `name`, and
+`sandwiches` has the columns `id`, `type`, and `student_id`.
 
-Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named Geraldo.
+Use ActiveRecord to create a new `pbj` sandwich and make it belong to the student named
+Geraldo.
 
 ```rb
-# Your answer...
+class Sandwich < ActiveRecord::Base
+   belongs_to: student
+ end
+ @geraldo = Student.find(name: "Geraldo")
+ @pbj = Sandwich.create(id: 1, type: "pbj", student_id: @geraldo.id)
 
 ```
 
 ## Question 7
 
-Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`, and `orange`.
+Using Ruby, instantiate an array called `fruits` that contains `apples`, `bananas`, and
+`oranges`.
 
-Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
+Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]"
+once for each fruit.
 
 ```rb
-# Your answer...
+fruits = ['apples', 'bananas', 'oranges']
+
+fruits.each do |fruit|
+puts "I like to eat a " + fruit
+  end
 
 ```
 
@@ -100,13 +127,28 @@ Then, use an enumerator to print to the console the sentence "I'd like to eat a 
 
 Write one Express route for each of four HTTP methods.
 
-Then, make each route respond with a one-word string containing the RESTful action that would most likely be associated with this route.
+Then, make each route respond with a one-word string containing the RESTful action that
+would most likely be associated with this route.
 
 ```js
 var express = require("express");
 var app = express();
 
-// Your code starts here...
+app.post("/anything" function(req,res){
+  res.send("create comment here")
+});
+
+app.get("/something", function (req, res) {
+  res.send(read)
+});
+
+app.put("/something", function(req,res){
+  res.send("update comment here")
+});
+
+app.delete("/anything", function(req,res){
+  res.send("Destroy")
+});
 
 ```
 
@@ -119,33 +161,56 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+Clark Answer: Methods with and ! attached to the end of them usually mean that they will
+modify the object they are calling on. Save! will raise an error if not successful. Save
+will return true or false
 
 ## Question 10
 
-Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All done!" when complete.
+Using jQuery, write an AJAX request to `http://tunr.com/artists` that would create a new
+artist with the name of 'Resin Laying Deer Figurine, Gold', and pop up a box saying "All
+done!" when complete.
 
 ```js
-// Your code starts here...
+$.ajax({
+  url: 'http://tunr.com/artists',
+  method: 'post',
+  data: {name: 'Resin Laying Deer Figurine, Gold'},
+  contentType: 'application/json'
+}).done(function(res){
+  alert('All Done!')
+})
 
 ```
 
 ## Question 11
 
-Due to budget cuts, GA can no longer hire new instructors. Instead they can only instantiate new instructors with Javascript.
+Due to budget cuts, GA can no longer hire new instructors. Instead they can only instantiate
+new instructors with Javascript.
 
-Define a Javascript constructor called 'Instructor'. Every instance of Instructor should have a `name` property, and a method called `receivePresent`. This method takes one argument called `gift` and, when executed, console-logs "[name] promptly drops the [gift] on the floor."
+Define a Javascript constructor called 'Instructor'. Every instance of Instructor should
+have a `name` property, and a method called `receivePresent`. This method takes one argument
+called `gift` and, when executed, console-logs "[name] promptly drops the [gift] on the
+floor."
 
-Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin Laying Deer Figurine, Gold" as the argument.
+Instantiate an instructor named 'Andy' and call its `receivePresent` method with "Resin
+Laying Deer Figurine, Gold" as the argument.
 
 ```js
-// Your code starts here...
+function Instructor(name, gift){
+   var self = this;
+   this.name = name;
+   this.receivePresent = function (gift){
+     console.log(self.name + "promptly drops the "+ gift +" on the floor.")
+   }
+ }
 
 ```
 
 ## Question 12
 
-Your Rails app has the following `application.html.erb`. Nothing shows up in your browser on any of your app's pages. Why not?
+Your Rails app has the following `application.html.erb`. Nothing shows up in your browser on
+any of your app's pages. Why not?
 
 ```erb
 <!DOCTYPE html
@@ -162,13 +227,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+Clark Answer </html>
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+Clark Answer = B
 
 ### A:
 ```
@@ -230,6 +295,7 @@ Convert the following ActiveRecord sequence to Mongoose:
 ```
 
 ```js
-// Your answer...
+Instructor.find({name: 'Andy'}).then(function(response){
+  response.wishlist_items.push({description: "resin Laying Deer Figurine, Gold"})
+}
 ```
-
