@@ -24,13 +24,13 @@ You've written the following HTML. When you look at it in your browser, it's jus
 </html>
 ```
 
-> Your answer...
+> I believe because there is no closing <title> tag
 
 ## Question 2
 
 What's the purpose of the `alt` attribute on image tags?
 
-> Your answer...
+> Alternate text on the image
 
 ## Question 3
 
@@ -41,7 +41,7 @@ var theBody = document.querySelectorAll("body");
 theBody.style.backgroundColor = "red";
 ```
 
-> Your answer...
+> You can't query "body" because it's not an element
 
 ## Question 4
 
@@ -53,7 +53,7 @@ body{
 }
 ```
 
-> Your answer...
+> Correct syntax would be with a ":" instead of "=" and doesn't need quotation marks
 
 ## Question 5
 
@@ -62,16 +62,18 @@ body{
 All the steps for one way of doing the above have been written below, but in the wrong order. Put them in the correct order.
 
 ```
+$ git init project-repo
+$ git remote add origin git@github.com/username/project-repo.git
+$ cd project-repo
 $ touch README.md
 $ git push origin master
-$ git push origin master
-$ git remote add origin git@github.com/username/project-repo.git
 $ git remote add juan git@github.com/juan/project-repo.git
-$ git commit -m "initial commit"
-$ cd project-repo
-$ git init project-repo
-$ git add .
 $ git merge juan/feature
+$ git add .
+$ git push origin master
+$ git commit -m "initial commit"
+
+
 ```
 
 ## Question 6
@@ -92,7 +94,7 @@ Using Ruby, instantiate an array called `fruits` that contains `apple`, `banana`
 Then, use an enumerator to print to the console the sentence "I'd like to eat a [fruit]" once for each fruit.
 
 ```rb
-# Your answer...
+# fruits = ['apple', 'banana', 'orange']
 
 ```
 
@@ -119,7 +121,7 @@ What is the difference between the two following lines of code?
 @artist.save!
 ```
 
-> Your answer...
+> It's called the bang. It basically forces it to be saved even if its false or its like a permanent change
 
 ## Question 10
 
@@ -162,13 +164,13 @@ Your Rails app has the following `application.html.erb`. Nothing shows up in you
 </html>
 ```
 
-> Your answer...
+> Missing bracket for the closing title tag
 
 ## Question 13
 
 Of the three options below, which is the most "correct" way of organizing the files that make up an Angular app, as used in class? Why is this option considered "better" than the other two?
 
-> Your answer...
+> B
 
 ### A:
 ```
